@@ -1,4 +1,4 @@
-package net.iwillwork4u.demo;
+package net.iwillwork4u.sensors;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

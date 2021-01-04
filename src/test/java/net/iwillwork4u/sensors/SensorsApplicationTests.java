@@ -1,4 +1,4 @@
-package net.iwillwork4u.demo;
+package net.iwillwork4u.sensors;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -12,7 +12,6 @@ public class Sensor {
 
     private @Id @GeneratedValue
     Long sid;
-    private String name;
     private Integer htAlert = 90;
     private Integer ltAlert = 40;
     private Integer hhAlert = 80;
@@ -22,6 +21,7 @@ public class Sensor {
     private Integer timeBetween = 1;
     private LocalDate alertTriggered = LocalDate.now().minusYears(1);
     private double lastTemp = 0.0;
+    private String name;
     @ManyToOne
     private User user;
 
@@ -41,9 +41,8 @@ public class Sensor {
 
     public Sensor() { }
 
-    public Sensor(String name, User user) {
-        this.name = name;
-        this.user = user;
+    public Sensor(String name) {
+        this.name = name;;
     }
 
     public Sensor(Long sid, String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDate alertTriggered, double lastTemp, User user) {

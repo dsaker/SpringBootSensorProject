@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class User {
     private String phoneNumber;
     private String carrier;
     @OneToMany(targetEntity = Sensor.class)
-    private Set<Sensor> sensorSet;
+    private Set<Sensor> sensorSet = new HashSet<>();
 
     public User(String name, String phonenumber, String carrier) {
         this.name = name;

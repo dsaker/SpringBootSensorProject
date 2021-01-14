@@ -30,7 +30,7 @@ class SensorList extends React.Component {
             <table>
                 <tbody>
                 <tr>
-                    <th>name</th>
+                    <th>Name</th>
                     <th>High Temp Alert</th>
                     <th>Low Temp Alert</th>
                     <th>High Humidity Alert</th>

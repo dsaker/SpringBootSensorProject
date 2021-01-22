@@ -1,17 +1,17 @@
 package net.iwillwork4u.sensors.sensor;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import net.iwillwork4u.sensors.user.User;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
 public class Sensor {
 
-    private @Id @GeneratedValue
-    Long sid;
+    private @Id @GeneratedValue Long sid;
+    @Size(min=5, max=50, message="{Size.Sensor.name.validation")
     private String name;
     private Integer htAlert = 90;
     private Integer ltAlert = 40;
@@ -20,12 +20,12 @@ public class Sensor {
     private Boolean tempAlertOn = true;
     private Boolean humAlertOn = true;
     private Integer timeBetween = 1;
-    private LocalDate alertTriggered = LocalDate.now().minusYears(1);
-    private double lastTemp = 0.0;
+    private LocalDateTime alertTriggered = LocalDateTime.now().minusYears(1);
+    private Double lastTemp = 0.0;
     @ManyToOne
     private User user;
 
-    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDate alertTriggered, Float lastTemp, User user) {
+    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, User user) {
         this.name = name;
         this.htAlert = htAlert;
         this.ltAlert = ltAlert;
@@ -43,21 +43,6 @@ public class Sensor {
 
     public Sensor(String name) {
         this.name = name;;
-    }
-
-    public Sensor(Long sid, String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDate alertTriggered, double lastTemp, User user) {
-        this.sid = sid;
-        this.name = name;
-        this.htAlert = htAlert;
-        this.ltAlert = ltAlert;
-        this.hhAlert = hhAlert;
-        this.lhAlert = lhAlert;
-        this.tempAlertOn = tempAlertOn;
-        this.humAlertOn = humAlertOn;
-        this.timeBetween = timeBetween;
-        this.alertTriggered = alertTriggered;
-        this.lastTemp = lastTemp;
-        this.user = user;
     }
 
     public Long getSid() {
@@ -132,19 +117,19 @@ public class Sensor {
         this.timeBetween = time_between;
     }
 
-    public LocalDate getAlertTriggered() {
+    public LocalDateTime getAlertTriggered() {
         return alertTriggered;
     }
 
-    public void setAlertTriggered(LocalDate alert_triggered) {
+    public void setAlertTriggered(LocalDateTime alert_triggered) {
         this.alertTriggered = alert_triggered;
     }
 
-    public double getLastTemp() {
+    public Double getLastTemp() {
         return lastTemp;
     }
 
-    public void setLastTemp(Float last_temp) {
+    public void setLastTemp(Double last_temp) {
         this.lastTemp = last_temp;
     }
 

@@ -66,8 +66,7 @@ public class User {
     }
 
     public void removeSensor(Sensor sensor) {
-        sensorSet.add(sensor);
-        sensor.setUser(this);
+        sensorSet.remove(sensor);
     }
 
     @Override

@@ -1,7 +1,5 @@
-package net.iwillwork4u.sensors.sensor;
+package net.iwillwork4u.sensors.entity;
 
-import net.iwillwork4u.sensors.user.User;
-import net.iwillwork4u.sensors.measurement.Measurement;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;

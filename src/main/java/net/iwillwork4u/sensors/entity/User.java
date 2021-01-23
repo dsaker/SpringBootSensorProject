@@ -1,6 +1,4 @@
-package net.iwillwork4u.sensors.user;
-
-import net.iwillwork4u.sensors.sensor.Sensor;
+package net.iwillwork4u.sensors.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

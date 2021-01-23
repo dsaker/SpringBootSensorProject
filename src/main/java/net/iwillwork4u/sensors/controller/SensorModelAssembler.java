@@ -1,5 +1,6 @@
-package net.iwillwork4u.sensors.sensor;
+package net.iwillwork4u.sensors.controller;
 
+import net.iwillwork4u.sensors.entity.Sensor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

@@ -1,5 +1,7 @@
-package net.iwillwork4u.sensors.sensor;
+package net.iwillwork4u.sensors.controller;
 
+import net.iwillwork4u.sensors.entity.Sensor;
+import net.iwillwork4u.sensors.repository.SensorRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -25,7 +27,7 @@ public class SensorController {
     }
 
     @GetMapping()
-    CollectionModel<EntityModel<Sensor>> all() {
+    public CollectionModel<EntityModel<Sensor>> all() {
         List<EntityModel<Sensor>> sensors = sensorRepository.findAll().stream()
                 .map(assembler::toModel)
                 .collect(Collectors.toList());
@@ -41,7 +43,7 @@ public class SensorController {
     }
 
     @GetMapping("/{id}")
-    EntityModel<Sensor> one(@PathVariable Long id) {
+    public EntityModel<Sensor> one(@PathVariable Long id) {
         Sensor sensor = sensorRepository.findById(id).orElseThrow(() ->
                 new SensorNotFoundException(id));
         return assembler.toModel(sensor);

@@ -1,9 +1,9 @@
-package net.iwillwork4u.sensors;
+package net.iwillwork4u.sensors.resources;
 
-import net.iwillwork4u.sensors.sensor.Sensor;
-import net.iwillwork4u.sensors.sensor.SensorRepository;
-import net.iwillwork4u.sensors.user.User;
-import net.iwillwork4u.sensors.user.UserRepository;
+import net.iwillwork4u.sensors.entity.Sensor;
+import net.iwillwork4u.sensors.repository.SensorRepository;
+import net.iwillwork4u.sensors.entity.User;
+import net.iwillwork4u.sensors.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,7 @@
-package net.iwillwork4u.sensors.user;
+package net.iwillwork4u.sensors.repository;
 
-import net.iwillwork4u.sensors.sensor.Sensor;
+import net.iwillwork4u.sensors.entity.User;
+import net.iwillwork4u.sensors.entity.Sensor;
 
 public class UserRepositoryCustomImpl implements UserRepositoryCustom {
     @Override

@@ -1,5 +1,6 @@
-package net.iwillwork4u.sensors.measurement;
+package net.iwillwork4u.sensors.repository;
 
+import net.iwillwork4u.sensors.entity.Measurement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

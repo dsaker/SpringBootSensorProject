@@ -1,13 +1,13 @@
-package net.iwillwork4u.sensors.measurement;
+package net.iwillwork4u.sensors.controller;
 
-import net.iwillwork4u.sensors.sensor.Sensor;
-import net.iwillwork4u.sensors.sensor.SensorNotFoundException;
-import net.iwillwork4u.sensors.sensor.SensorRepository;
+import net.iwillwork4u.sensors.entity.Measurement;
+import net.iwillwork4u.sensors.repository.MeasurementRepository;
+import net.iwillwork4u.sensors.entity.Sensor;
+import net.iwillwork4u.sensors.repository.SensorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController

@@ -2,7 +2,7 @@ package net.iwillwork4u.sensors.sensor;
 
 public class SensorNotFoundException extends RuntimeException {
 
-    SensorNotFoundException(Long id) {
+    public SensorNotFoundException(Long id) {
         super("Could not find sensor " + id);
     }
 }

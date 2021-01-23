@@ -51,7 +51,6 @@ public class SensorController {
 
     @PostMapping("/data/{id}")
     public void addData(@PathVariable Long id, @RequestBody SensorDataDto sensorData) {
-        repository.addSensorData(sensorData, id);
     }
 
 }

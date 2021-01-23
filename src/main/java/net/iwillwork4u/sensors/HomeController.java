@@ -1,4 +1,4 @@
-package net.iwillwork4u.sensors.react;
+package net.iwillwork4u.sensors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

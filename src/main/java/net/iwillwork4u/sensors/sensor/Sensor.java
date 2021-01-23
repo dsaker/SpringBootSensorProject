@@ -1,11 +1,13 @@
 package net.iwillwork4u.sensors.sensor;
 
 import net.iwillwork4u.sensors.user.User;
-
+import net.iwillwork4u.sensors.measurement.Measurement;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Sensor {
@@ -24,6 +26,13 @@ public class Sensor {
     private Double lastTemp = 0.0;
     @ManyToOne
     private User user;
+    @OneToMany(
+            mappedBy = "sensor",
+            cascade = {CascadeType.MERGE},
+            fetch = FetchType.LAZY
+    )
+    private Set<Measurement> measurements = new HashSet<>();
+
 
     public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, User user) {
         this.name = name;
@@ -139,6 +148,14 @@ public class Sensor {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Set<Measurement> getDataEntries() {
+        return measurements;
+    }
+
+    public void setDataEntries(Set<Measurement> dataEntries) {
+        this.measurements = dataEntries;
     }
 
     @Override

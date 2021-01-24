@@ -1,4 +1,4 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.sensor;
 
 public class SensorNotFoundException extends RuntimeException {
 

@@ -156,6 +156,15 @@ public class Sensor {
         this.measurements = dataEntries;
     }
 
+    public void addMeasurement(Measurement measurement) {
+        measurements.add(measurement);
+        measurement.setSensor(this);
+    }
+
+    public void removeMeasurement(Measurement measurement) {
+        measurements.remove(measurement);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

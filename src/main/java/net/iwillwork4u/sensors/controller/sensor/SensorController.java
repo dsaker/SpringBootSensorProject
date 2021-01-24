@@ -1,7 +1,7 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.sensor;
 
 import net.iwillwork4u.sensors.entity.Sensor;
-import net.iwillwork4u.sensors.repository.SensorRepository;
+import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;

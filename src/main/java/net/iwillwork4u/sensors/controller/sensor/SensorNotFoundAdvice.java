@@ -1,4 +1,4 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.sensor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

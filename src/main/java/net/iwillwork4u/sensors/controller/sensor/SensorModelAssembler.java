@@ -1,4 +1,4 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.sensor;
 
 import net.iwillwork4u.sensors.entity.Sensor;
 import org.springframework.hateoas.EntityModel;

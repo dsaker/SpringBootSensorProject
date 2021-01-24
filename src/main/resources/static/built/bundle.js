@@ -34075,7 +34075,12 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -34103,6 +34108,12 @@ var ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/in
 
 var client = __webpack_require__(/*! ./client */ "./src/main/js/client.js");
 
+var follow = __webpack_require__(/*! ./follow */ "./src/main/js/follow.js");
+
+var when = __webpack_require__(/*! when */ "./node_modules/when/when.js");
+
+var root = '/api';
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -34115,79 +34126,491 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      sensors: []
+      sensors: [],
+      attributes: [],
+      pageSize: 10,
+      links: {}
     };
+    _this.updatePageSize = _this.updatePageSize.bind(_assertThisInitialized(_this));
+    _this.onCreate = _this.onCreate.bind(_assertThisInitialized(_this));
+    _this.onDelete = _this.onDelete.bind(_assertThisInitialized(_this));
+    _this.onNavigate = _this.onNavigate.bind(_assertThisInitialized(_this));
+    _this.onUpdate = _this.onUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(App, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "loadFromServer",
+    value: function loadFromServer(pageSize) {
       var _this2 = this;
 
-      client({
-        method: "GET",
-        path: '/api/sensors'
-      }).done(function (response) {
+      follow(client, root, [{
+        rel: 'sensors',
+        params: {
+          size: pageSize
+        }
+      }]).then(function (sensorCollection) {
+        //console.log("loadFromServer:sensorCollection");
+        //console.log(sensorCollection);
+        return client({
+          method: 'GET',
+          path: sensorCollection.entity._links.profile.href,
+          headers: {
+            'Accept': 'application/schema+json'
+          }
+        }).then(function (schema) {
+          _this2.schema = schema.entity;
+          return sensorCollection;
+        });
+      }).then(function (sensorCollection) {
         _this2.setState({
-          sensors: response.entity._embedded.sensors
+          links: sensorCollection.entity._links
+        });
+
+        return sensorCollection.entity._embedded.sensors.map(function (sensor) {
+          return client({
+            method: 'GET',
+            path: sensor._links.self.href
+          });
+        });
+      }).then(function (sensorPromises) {
+        return when.all(sensorPromises);
+      }).done(function (sensors) {
+        //console.log("loadFromServer:sensors")
+        //console.log(sensors);
+        _this2.setState({
+          sensors: sensors,
+          attributes: Object.keys(_this2.schema.properties),
+          pageSize: pageSize
         });
       });
     }
   }, {
+    key: "onCreate",
+    value: function onCreate(newSensor) {
+      var _this3 = this;
+
+      follow(client, root, ['sensors']).then(function (sensorCollection) {
+        return client({
+          method: 'POST',
+          path: sensorCollection.entity._links.self.href,
+          entity: newSensor,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      }).then(function (response) {
+        _this3.loadFromServer(_this3.state.pageSize);
+      });
+    }
+  }, {
+    key: "onUpdate",
+    value: function onUpdate(sensor, updatedSensor) {
+      var _this4 = this;
+
+      //console.log("onUpdate: sensor");
+      //console.log(sensor);
+      //console.log(updatedSensor);
+      client({
+        method: 'PUT',
+        path: sensor._links.self.href,
+        entity: updatedSensor,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).done(function (response) {
+        _this4.loadFromServer(_this4.state.pageSize);
+      });
+    }
+  }, {
+    key: "onDelete",
+    value: function onDelete(sensor) {
+      var _this5 = this;
+
+      console.log("onDelete");
+      console.log(sensor);
+      client({
+        method: 'DELETE',
+        path: sensor.entity._links.self.href
+      }).done(function (response) {
+        _this5.loadFromServer(_this5.state.pageSize);
+      });
+    }
+  }, {
+    key: "onNavigate",
+    value: function onNavigate(navUri) {
+      var _this6 = this;
+
+      client({
+        method: 'GET',
+        path: navUri
+      }).then(function (sensorCollection) {
+        _this6.links = sensorCollection.entity._links;
+        return sensorCollection.entity._embedded.sensors.map(function (sensor) {
+          return client({
+            method: 'GET',
+            path: sensor._links.self.href
+          });
+        });
+      }).then(function (sensorPromises) {
+        return when.all(sensorPromises);
+      }).done(function (sensors) {
+        _this6.setState({
+          sensors: sensors,
+          attributes: Object.keys(_this6.schema.properties),
+          pageSize: _this6.state.pageSize,
+          links: _this6.links
+        });
+      });
+    }
+  }, {
+    key: "updatePageSize",
+    value: function updatePageSize(pageSize) {
+      if (pageSize !== this.state.pageSize) {
+        this.loadFromServer(pageSize);
+      }
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.loadFromServer(this.state.pageSize);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(SensorList, {
-        sensors: this.state.sensors
-      });
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CreateDialog, {
+        attributes: this.state.attributes,
+        onCreate: this.onCreate
+      }), /*#__PURE__*/React.createElement(SensorList, {
+        sensors: this.state.sensors,
+        links: this.state.links,
+        pageSize: this.state.pageSize,
+        onNavigate: this.onNavigate,
+        onUpdate: this.onUpdate,
+        onDelete: this.onDelete,
+        updatePageSize: this.updatePageSize
+      }));
     }
   }]);
 
   return App;
 }(React.Component);
 
-var SensorList = /*#__PURE__*/function (_React$Component2) {
-  _inherits(SensorList, _React$Component2);
+var UpdateDialog = /*#__PURE__*/function (_React$Component2) {
+  _inherits(UpdateDialog, _React$Component2);
 
-  var _super2 = _createSuper(SensorList);
+  var _super2 = _createSuper(UpdateDialog);
 
-  function SensorList() {
+  function UpdateDialog(props) {
+    var _this7;
+
+    _classCallCheck(this, UpdateDialog);
+
+    _this7 = _super2.call(this, props);
+    _this7.textInput = React.createRef();
+    _this7.state = {
+      tempAlertOn: true,
+      humAlertOn: true,
+      timeBetween: _this7.props.sensor.entity['timeBetween'],
+      htAlert: _this7.props.sensor.entity['htAlert'],
+      ltAlert: _this7.props.sensor.entity['ltAlert'],
+      hhAlert: _this7.props.sensor.entity['hhAlert'],
+      lhAlert: _this7.props.sensor.entity['lhAlert']
+    };
+    _this7.handleSubmit = _this7.handleSubmit.bind(_assertThisInitialized(_this7));
+    _this7.handleInputChange = _this7.handleInputChange.bind(_assertThisInitialized(_this7));
+    return _this7;
+  }
+
+  _createClass(UpdateDialog, [{
+    key: "handleInputChange",
+    value: function handleInputChange(event) {
+      var target = event.target;
+      var value = target.type === 'checkbox' ? target.checked : target.value;
+      var name = target.name;
+      this.setState(_defineProperty({}, name, value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      var updateSensor = {};
+      updateSensor['name'] = this.textInput.current.value;
+      updateSensor['htAlert'] = this.state.htAlert;
+      updateSensor['ltAlert'] = this.state.ltAlert;
+      updateSensor['hhAlert'] = this.state.hhAlert;
+      updateSensor['lhAlert'] = this.state.lhAlert;
+      updateSensor['tempAlertOn'] = this.state.tempAlertOn;
+      updateSensor['humAlertOn'] = this.state.humAlertOn;
+      updateSensor['timeBetween'] = this.state.timeBetween;
+      this.props.onUpdate(this.props.sensor.entity, updateSensor);
+      window.location = '#';
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var dialogId = "updateSensor-" + this.props.sensor.entity._links.self.href;
+      return /*#__PURE__*/React.createElement("div", {
+        key: this.props.sensor.entity._links.self.href
+      }, /*#__PURE__*/React.createElement("a", {
+        href: '#' + dialogId
+      }, "Update"), /*#__PURE__*/React.createElement("div", {
+        id: dialogId,
+        className: "modalDialog"
+      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+        href: "#",
+        title: "Close",
+        className: "close"
+      }, "X"), /*#__PURE__*/React.createElement("h2", null, "Update a Sensor"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, " Sensor Name:", /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        ref: this.textInput,
+        defaultValue: this.props.sensor.entity['name']
+      })), /*#__PURE__*/React.createElement("p", null, " High Temperature Alert:", /*#__PURE__*/React.createElement("input", {
+        name: "htAlert",
+        type: "range",
+        min: "0",
+        max: "100",
+        value: this.state.htAlert,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/React.createElement("output", null, this.state.htAlert)), /*#__PURE__*/React.createElement("p", null, " Low Temperature Alert:", /*#__PURE__*/React.createElement("input", {
+        name: "ltAlert",
+        type: "range",
+        min: "0",
+        max: "100",
+        value: this.state.ltAlert,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/React.createElement("output", null, this.state.ltAlert)), /*#__PURE__*/React.createElement("p", null, " High Humidity Alert:", /*#__PURE__*/React.createElement("input", {
+        name: "hhAlert",
+        type: "range",
+        min: "0",
+        max: "100",
+        value: this.state.hhAlert,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/React.createElement("output", null, this.state.hhAlert)), /*#__PURE__*/React.createElement("p", null, " Low Humidity Alert:", /*#__PURE__*/React.createElement("input", {
+        name: "lhAlert",
+        type: "range",
+        min: "0",
+        max: "100",
+        value: this.state.lhAlert,
+        onChange: this.handleInputChange
+      }), /*#__PURE__*/React.createElement("output", null, this.state.lhAlert)), /*#__PURE__*/React.createElement("p", null, " Temperature Alert On:", /*#__PURE__*/React.createElement("input", {
+        name: "tempAlertOn",
+        type: "checkbox",
+        checked: this.state.tempAlertOn,
+        onChange: this.handleInputChange
+      })), /*#__PURE__*/React.createElement("p", null, " Humidity Alert On:", /*#__PURE__*/React.createElement("input", {
+        name: "humAlertOn",
+        ref: "humAlertOn",
+        type: "checkbox",
+        checked: this.state.humAlertOn,
+        onChange: this.handleInputChange
+      })), /*#__PURE__*/React.createElement("p", null, " Time Between Alert (in hours):", /*#__PURE__*/React.createElement("input", {
+        name: "timeBetween",
+        type: "number",
+        value: this.state.timeBetween,
+        onChange: this.handleInputChange
+      })), /*#__PURE__*/React.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Update")))));
+    }
+  }]);
+
+  return UpdateDialog;
+}(React.Component);
+
+var CreateDialog = /*#__PURE__*/function (_React$Component3) {
+  _inherits(CreateDialog, _React$Component3);
+
+  var _super3 = _createSuper(CreateDialog);
+
+  function CreateDialog(props) {
+    var _this8;
+
+    _classCallCheck(this, CreateDialog);
+
+    _this8 = _super3.call(this, props);
+    _this8.textInput = React.createRef();
+    _this8.handleSubmit = _this8.handleSubmit.bind(_assertThisInitialized(_this8));
+    return _this8;
+  }
+
+  _createClass(CreateDialog, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.onCreate(this.textInput.current.value.trim());
+      this.textInput.current.value = '';
+      window.location = "#";
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+        href: "#createSensor"
+      }, "Create"), /*#__PURE__*/React.createElement("div", {
+        id: "createSensor",
+        className: "modalDialog"
+      }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+        href: "#",
+        title: "Close",
+        className: "close"
+      }, "X"), /*#__PURE__*/React.createElement("h2", null, "Create new sensor"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "sensor name",
+        ref: this.textInput,
+        className: "field"
+      })), /*#__PURE__*/React.createElement("button", {
+        onClick: this.handleSubmit
+      }, "Create")))));
+    }
+  }]);
+
+  return CreateDialog;
+}(React.Component);
+
+var SensorList = /*#__PURE__*/function (_React$Component4) {
+  _inherits(SensorList, _React$Component4);
+
+  var _super4 = _createSuper(SensorList);
+
+  function SensorList(props) {
+    var _this9;
+
     _classCallCheck(this, SensorList);
 
-    return _super2.apply(this, arguments);
+    _this9 = _super4.call(this, props);
+    _this9.pageSize = React.createRef();
+    _this9.handleNavFirst = _this9.handleNavFirst.bind(_assertThisInitialized(_this9));
+    _this9.handleNavPrev = _this9.handleNavPrev.bind(_assertThisInitialized(_this9));
+    _this9.handleNavNext = _this9.handleNavNext.bind(_assertThisInitialized(_this9));
+    _this9.handleNavLast = _this9.handleNavLast.bind(_assertThisInitialized(_this9));
+    _this9.handleInput = _this9.handleInput.bind(_assertThisInitialized(_this9));
+    return _this9;
   }
 
   _createClass(SensorList, [{
+    key: "handleInput",
+    value: function handleInput(e) {
+      e.preventDefault();
+      var pageSize = this.pageSize.current.value;
+
+      if (/^[0-9]+$/.test(pageSize)) {
+        this.props.updatePageSize(pageSize);
+      } else {
+        this.pageSize.current.value = pageSize.substring(0, pageSize.length - 1);
+      }
+    }
+  }, {
+    key: "handleNavFirst",
+    value: function handleNavFirst(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.first.href);
+    }
+  }, {
+    key: "handleNavPrev",
+    value: function handleNavPrev(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.prev.href);
+    }
+  }, {
+    key: "handleNavNext",
+    value: function handleNavNext(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.next.href);
+    }
+  }, {
+    key: "handleNavLast",
+    value: function handleNavLast(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.last.href);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this10 = this;
+
+      //console.log("SensorList:sensors");
+      //console.log(this.props.sensors);
       var sensors = this.props.sensors.map(function (sensor) {
         return /*#__PURE__*/React.createElement(Sensor, {
-          key: sensors._links.self.href,
-          sensor: sensor
+          key: sensor.entity._links.self.href,
+          sensor: sensor,
+          onUpdate: _this10.props.onUpdate,
+          onDelete: _this10.props.onDelete
         });
       });
-      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "name"), /*#__PURE__*/React.createElement("th", null, "High Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Low Temp Alert"), /*#__PURE__*/React.createElement("th", null, "High Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Low Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Temp Alert On"), /*#__PURE__*/React.createElement("th", null, "Humidity Alert On"), /*#__PURE__*/React.createElement("th", null, "Time Between Alerts"), /*#__PURE__*/React.createElement("th", null, "Last Alert Triggered"), /*#__PURE__*/React.createElement("th", null, "Last Temp")), sensors));
+      var navLinks = [];
+
+      if ("first" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "first",
+          onClick: this.handleNavFirst
+        }, "<<"));
+      }
+
+      if ("prev" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "prev",
+          onClick: this.handleNavPrev
+        }, "<"));
+      }
+
+      if ("next" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "next",
+          onClick: this.handleNavNext
+        }, ">"));
+      }
+
+      if ("last" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "last",
+          onClick: this.handleNavLast
+        }, ">>"));
+      }
+
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
+        ref: this.pageSize,
+        defaultValue: this.props.pageSize,
+        onInput: this.handleInput
+      }), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Name"), /*#__PURE__*/React.createElement("th", null, "High Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Low Temp Alert"), /*#__PURE__*/React.createElement("th", null, "High Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Low Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Time Between Alerts"), /*#__PURE__*/React.createElement("th", null, "Last Alert Triggered"), /*#__PURE__*/React.createElement("th", null, "Last Temp")), sensors)), /*#__PURE__*/React.createElement("div", null, navLinks));
     }
   }]);
 
   return SensorList;
 }(React.Component);
 
-var Sensor = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Sensor, _React$Component3);
+var Sensor = /*#__PURE__*/function (_React$Component5) {
+  _inherits(Sensor, _React$Component5);
 
-  var _super3 = _createSuper(Sensor);
+  var _super5 = _createSuper(Sensor);
 
-  function Sensor() {
+  function Sensor(props) {
+    var _this11;
+
     _classCallCheck(this, Sensor);
 
-    return _super3.apply(this, arguments);
+    _this11 = _super5.call(this, props);
+    _this11.handleDelete = _this11.handleDelete.bind(_assertThisInitialized(_this11));
+    return _this11;
   }
 
   _createClass(Sensor, [{
+    key: "handleDelete",
+    value: function handleDelete() {
+      //console.log("handleDelete")
+      //console.log(this.props.sensor)
+      this.props.onDelete(this.props.sensor);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.htAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.ltAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.hhAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.lhAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.tempAlertOn), /*#__PURE__*/React.createElement("td", null, this.props.sensor.humAlertOn), /*#__PURE__*/React.createElement("td", null, this.props.sensor.timeBetween), /*#__PURE__*/React.createElement("td", null, this.props.sensor.alertTriggered), /*#__PURE__*/React.createElement("td", null, this.props.sensor.lastTemp));
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.htAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.ltAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.hhAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lhAlert), this.props.sensor.entity.tempAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), this.props.sensor.entity.humAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.timeBetween), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.alertTriggered), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lastTemp), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(UpdateDialog, {
+        sensor: this.props.sensor,
+        onUpdate: this.props.onUpdate
+      })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("button", {
+        onClick: this.handleDelete
+      }, "Delete")));
     }
   }]);
 
@@ -34230,6 +34653,55 @@ module.exports = rest.wrap(mime, {
     'Accept': 'application/hal+json'
   }
 });
+
+/***/ }),
+
+/***/ "./src/main/js/follow.js":
+/*!*******************************!*\
+  !*** ./src/main/js/follow.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function follow(api, rootPath, relArray) {
+  var root = api({
+    method: 'GET',
+    path: rootPath
+  });
+  return relArray.reduce(function (root, arrayItem) {
+    var rel = typeof arrayItem === 'string' ? arrayItem : arrayItem.rel;
+    return traverseNext(root, rel, arrayItem);
+  }, root);
+
+  function traverseNext(root, rel, arrayItem) {
+    return root.then(function (response) {
+      if (hasEmbeddedRel(response.entity, rel)) {
+        return response.entity._embedded[rel];
+      }
+
+      if (!response.entity._links) {
+        return [];
+      }
+
+      if (typeof arrayItem === 'string') {
+        return api({
+          method: 'GET',
+          path: response.entity._links[rel].href
+        });
+      } else {
+        return api({
+          method: 'GET',
+          path: response.entity._links[rel].href,
+          params: arrayItem.params
+        });
+      }
+    });
+  }
+
+  function hasEmbeddedRel(entity, rel) {
+    return entity._embedded && entity._embedded.hasOwnProperty(rel);
+  }
+};
 
 /***/ }),
 

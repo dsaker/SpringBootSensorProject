@@ -1,11 +1,16 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import Sensors from "./sensors";
 
-const Home = () => (
-    <div>
-        <h2>Home</h2>
-    </div>
-);
+class Home extends React.Component {
+    render() {
+        return (
+            <div>
+                <h2>Home</h2>
+            </div>
+        )
+    }
+}
 
 const Category = () => (
     <div>
@@ -34,6 +39,10 @@ export default class App extends React.Component {
                         <li>
                             <Link to="/products">Products</Link>
                         </li>
+                        <li>
+                            <Link to="/sensors">Sensors</Link>
+                        </li>
+
                     </ul>
                 </nav>
 
@@ -41,6 +50,7 @@ export default class App extends React.Component {
                 <Route path="/"><Home/></Route>
                 <Route path="/category"><Category/></Route>
                 <Route path="/products"><Products/></Route>
+                <Route path="/sensors"><Sensors/></Route>
             </div>
         )
     }

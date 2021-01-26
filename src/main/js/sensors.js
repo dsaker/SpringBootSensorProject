@@ -1,7 +1,6 @@
 'use strict';
 
 const React = require('react');
-const ReactDOM = require('react-dom');
 const client = require('./client');
 const follow = require('./follow');
 const when = require('when');
@@ -425,4 +424,3 @@ class Sensor extends React.Component {
 }
 
 export default Sensors;
-

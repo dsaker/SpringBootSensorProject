@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Sensors from "./sensors";
+import Display from "./display";
 
 class Home extends React.Component {
     render() {
@@ -12,15 +13,9 @@ class Home extends React.Component {
     }
 }
 
-const Category = () => (
+const Graphs = () => (
     <div>
-        <h2>Category</h2>
-    </div>
-);
-
-const Products = () => (
-    <div>
-        <h2>Products</h2>
+        <h2>Graphs</h2>
     </div>
 );
 
@@ -34,10 +29,10 @@ export default class App extends React.Component {
                             <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="/category">Category</Link>
+                            <Link to="/display">Temperature Display</Link>
                         </li>
                         <li>
-                            <Link to="/products">Products</Link>
+                            <Link to="/graphs">Graphs</Link>
                         </li>
                         <li>
                             <Link to="/sensors">Sensors</Link>
@@ -48,8 +43,8 @@ export default class App extends React.Component {
 
                 { /* Route components are rendered if the path prop matches the current URL */}
                 <Route path="/"><Home/></Route>
-                <Route path="/category"><Category/></Route>
-                <Route path="/products"><Products/></Route>
+                <Route path="/display"><Display/></Route>
+                <Route path="/graphs"><Graphs/></Route>
                 <Route path="/sensors"><Sensors/></Route>
             </div>
         )

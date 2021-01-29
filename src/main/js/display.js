@@ -1,8 +1,8 @@
 'use-strict';
 
 const React = require('react');
-const client = require('./client');
-const follow = require('./follow');
+const client = require('./functions/client');
+const follow = require('./functions/follow');
 const when = require('when');
 
 const root = '/api'

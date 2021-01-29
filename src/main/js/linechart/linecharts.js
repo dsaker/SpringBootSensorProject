@@ -1,13 +1,7 @@
-'use-strict';
-
 import React, {Component} from 'react';
-import client from './client';
-import follow from './follow';
-import when from 'when';
+import LineChart from './linechart.js';
 
-const root = '/api'
-
-class Linecharts extends Component {
+class LineCharts extends Component {
     createFakeData(){
         // This function creates data that doesn't look entirely random
         const data = []
@@ -22,10 +16,13 @@ class Linecharts extends Component {
     render() {
         return (
             <div className="App">
-                // THIS IS WHERE OUR SVG CHART WILL RENDER
+                oredakdfhkf
+                <div className="header">react svg line chart [part 1]</div>
+                <LineChart data={this.createFakeData()} />
+                <LineChart data={this.createFakeData()} color={'#F44336'}  />
             </div>
         );
     }
 }
 
-export default Linecharts;
+export default LineCharts;

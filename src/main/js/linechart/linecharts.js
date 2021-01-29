@@ -7,7 +7,7 @@ import when from 'when';
 
 const root = '/api'
 
-class Graphs extends Component {
+class Linecharts extends Component {
     createFakeData(){
         // This function creates data that doesn't look entirely random
         const data = []
@@ -28,4 +28,4 @@ class Graphs extends Component {
     }
 }
 
-export default Graphs;
+export default Linecharts;

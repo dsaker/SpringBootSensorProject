@@ -1,10 +1,8 @@
-'use-strict';
-
-import React, {Component} from 'react';
+import Sensors from '../sensors';
 
 const root = '/api'
 
-class d3Graphs extends Component {
+class d3Graphs extends Sensors {
     createFakeData(){
         // This function creates data that doesn't look entirely random
         const data = []

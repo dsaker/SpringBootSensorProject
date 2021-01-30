@@ -38050,8 +38050,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _sensors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sensors */ "./src/main/js/sensors.js");
-/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./display */ "./src/main/js/display.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _sensors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sensors */ "./src/main/js/sensors.js");
+/* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display */ "./src/main/js/display.js");
+/* harmony import */ var _linechart_linecharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./linechart/linecharts */ "./src/main/js/linechart/linecharts.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38078,6 +38080,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
 
@@ -38099,10 +38103,6 @@ var Home = /*#__PURE__*/function (_React$Component) {
   return Home;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var Graphs = function Graphs() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Graphs"));
-};
-
 var App = /*#__PURE__*/function (_React$Component2) {
   _inherits(App, _React$Component2);
 
@@ -38117,27 +38117,23 @@ var App = /*#__PURE__*/function (_React$Component2) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-        className: "navbar navbar-light"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "nav navbar-nav"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/"
-      }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+      }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/display"
-      }, "Temperature Display")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
-        to: "/graphs"
-      }, "Graphs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Link, {
+      }, "Temperature Display")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/linecharts"
+      }, "Line Charts")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/sensors"
-      }, "Sensors")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Route, {
+      }, "Sensors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Route, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/display"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_display__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Route, {
-        path: "/graphs"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Graphs, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Route, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_display__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/linecharts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_linechart_linecharts__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         path: "/sensors"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sensors__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sensors__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
     }
   }]);
 
@@ -38191,15 +38187,15 @@ var when = __webpack_require__(/*! when */ "./node_modules/when/when.js");
 
 var root = '/api';
 
-var Display = /*#__PURE__*/function (_React$Component) {
-  _inherits(Display, _React$Component);
+var LoadFromServer = /*#__PURE__*/function (_React$Component) {
+  _inherits(LoadFromServer, _React$Component);
 
-  var _super = _createSuper(Display);
+  var _super = _createSuper(LoadFromServer);
 
-  function Display(props) {
+  function LoadFromServer(props) {
     var _this;
 
-    _classCallCheck(this, Display);
+    _classCallCheck(this, LoadFromServer);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -38213,7 +38209,7 @@ var Display = /*#__PURE__*/function (_React$Component) {
     return _this;
   }
 
-  _createClass(Display, [{
+  _createClass(LoadFromServer, [{
     key: "loadFromServer",
     value: function loadFromServer(pageSize) {
       var _this2 = this;
@@ -38298,7 +38294,23 @@ var Display = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.loadFromServer(this.state.pageSize);
     }
-  }, {
+  }]);
+
+  return LoadFromServer;
+}(React.Component);
+
+var Display = /*#__PURE__*/function (_LoadFromServer) {
+  _inherits(Display, _LoadFromServer);
+
+  var _super2 = _createSuper(Display);
+
+  function Display() {
+    _classCallCheck(this, Display);
+
+    return _super2.apply(this, arguments);
+  }
+
+  _createClass(Display, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(SensorList, {
@@ -38312,19 +38324,19 @@ var Display = /*#__PURE__*/function (_React$Component) {
   }]);
 
   return Display;
-}(React.Component);
+}(LoadFromServer(props));
 
 var SensorList = /*#__PURE__*/function (_React$Component2) {
   _inherits(SensorList, _React$Component2);
 
-  var _super2 = _createSuper(SensorList);
+  var _super3 = _createSuper(SensorList);
 
   function SensorList(props) {
     var _this4;
 
     _classCallCheck(this, SensorList);
 
-    _this4 = _super2.call(this, props);
+    _this4 = _super3.call(this, props);
     _this4.pageSize = React.createRef();
     _this4.handleNavFirst = _this4.handleNavFirst.bind(_assertThisInitialized(_this4));
     _this4.handleNavPrev = _this4.handleNavPrev.bind(_assertThisInitialized(_this4));
@@ -38425,18 +38437,18 @@ var SensorList = /*#__PURE__*/function (_React$Component2) {
 var Sensor = /*#__PURE__*/function (_React$Component3) {
   _inherits(Sensor, _React$Component3);
 
-  var _super3 = _createSuper(Sensor);
+  var _super4 = _createSuper(Sensor);
 
   function Sensor(props) {
     _classCallCheck(this, Sensor);
 
-    return _super3.call(this, props);
+    return _super4.call(this, props);
   }
 
   _createClass(Sensor, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.htAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.ltAlert));
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lastTemp));
     }
   }]);
 
@@ -38616,7 +38628,255 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null), document.getElementById("react"));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_app__WEBPACK_IMPORTED_MODULE_2__["default"], null)), document.getElementById("react"));
+
+/***/ }),
+
+/***/ "./src/main/js/linechart/linechart.js":
+/*!********************************************!*\
+  !*** ./src/main/js/linechart/linechart.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var LineChart = /*#__PURE__*/function (_Component) {
+  _inherits(LineChart, _Component);
+
+  var _super = _createSuper(LineChart);
+
+  function LineChart() {
+    _classCallCheck(this, LineChart);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(LineChart, [{
+    key: "getMinX",
+    // GET MAX & MIN X
+    value: function getMinX() {
+      var data = this.props.data;
+      return data[0].x;
+    }
+  }, {
+    key: "getMaxX",
+    value: function getMaxX() {
+      var data = this.props.data;
+      return data[data.length - 1].x;
+    } // GET MAX & MIN Y
+
+  }, {
+    key: "getMinY",
+    value: function getMinY() {
+      var data = this.props.data;
+      return data.reduce(function (min, p) {
+        return p.y < min ? p.y : min;
+      }, data[0].y);
+    }
+  }, {
+    key: "getMaxY",
+    value: function getMaxY() {
+      var data = this.props.data;
+      return data.reduce(function (max, p) {
+        return p.y > max ? p.y : max;
+      }, data[0].y);
+    } // GET SVG COORDINATES
+
+  }, {
+    key: "getSvgX",
+    value: function getSvgX(x) {
+      var svgWidth = this.props.svgWidth;
+      return x / this.getMaxX() * svgWidth;
+    }
+  }, {
+    key: "getSvgY",
+    value: function getSvgY(y) {
+      var svgHeight = this.props.svgHeight;
+      return svgHeight - y / this.getMaxY() * svgHeight;
+    } // BUILD SVG PATH
+
+  }, {
+    key: "makePath",
+    value: function makePath() {
+      var _this = this;
+
+      var _this$props = this.props,
+          data = _this$props.data,
+          color = _this$props.color;
+      var pathD = "M " + this.getSvgX(data[0].x) + " " + this.getSvgY(data[0].y) + " ";
+      pathD += data.map(function (point, i) {
+        return "L " + _this.getSvgX(point.x) + " " + _this.getSvgY(point.y) + " ";
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+        className: "linechart_path",
+        d: pathD,
+        style: {
+          stroke: color
+        }
+      });
+    } // BUILD GRID AXIS
+
+  }, {
+    key: "makeAxis",
+    value: function makeAxis() {
+      var minX = this.getMinX(),
+          maxX = this.getMaxX();
+      var minY = this.getMinY(),
+          maxY = this.getMaxY();
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
+        className: "linechart_axis"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: this.getSvgX(minX),
+        y1: this.getSvgY(minY),
+        x2: this.getSvgX(maxX),
+        y2: this.getSvgY(minY)
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("line", {
+        x1: this.getSvgX(minX),
+        y1: this.getSvgY(minY),
+        x2: this.getSvgX(minX),
+        y2: this.getSvgY(maxY)
+      }));
+    } // RENDER & RETURN SVG PATH AND AXIS
+
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          svgHeight = _this$props2.svgHeight,
+          svgWidth = _this$props2.svgWidth;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+        viewBox: "0 0 ".concat(svgWidth, " ").concat(svgHeight)
+      }, this.makePath(), this.makeAxis());
+    }
+  }]);
+
+  return LineChart;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]); // DEFAULT PROPS
+
+
+LineChart.defaultProps = {
+  data: [],
+  color: '#2196F3',
+  svgHeight: 300,
+  svgWidth: 700
+};
+/* harmony default export */ __webpack_exports__["default"] = (LineChart);
+
+/***/ }),
+
+/***/ "./src/main/js/linechart/linecharts.js":
+/*!*********************************************!*\
+  !*** ./src/main/js/linechart/linecharts.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _linechart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./linechart.js */ "./src/main/js/linechart/linechart.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var LineCharts = /*#__PURE__*/function (_Component) {
+  _inherits(LineCharts, _Component);
+
+  var _super = _createSuper(LineCharts);
+
+  function LineCharts() {
+    _classCallCheck(this, LineCharts);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(LineCharts, [{
+    key: "createFakeData",
+    value: function createFakeData() {
+      // This function creates data that doesn't look entirely random
+      var data = [];
+
+      for (var x = 0; x <= 30; x++) {
+        var random = Math.random();
+        var temp = data.length > 0 ? data[data.length - 1].y : 50;
+        var y = random >= .45 ? temp + Math.floor(random * 20) : temp - Math.floor(random * 20);
+        data.push({
+          x: x,
+          y: y
+        });
+      }
+
+      return data;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "App"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header"
+      }, "react svg line chart [part 1]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_linechart_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: this.createFakeData()
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_linechart_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        data: this.createFakeData(),
+        color: '#F44336'
+      }));
+    }
+  }]);
+
+  return LineCharts;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (LineCharts);
 
 /***/ }),
 

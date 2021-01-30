@@ -7,7 +7,7 @@ const when = require('when');
 
 const root = '/api'
 
-class Display extends React.Component {
+class LoadFromServer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -78,7 +78,9 @@ class Display extends React.Component {
     componentDidMount() {
         this.loadFromServer(this.state.pageSize);
     }
+}
 
+class Display extends LoadFromServer {
     render() {
         return (
             <div>

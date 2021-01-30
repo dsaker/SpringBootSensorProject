@@ -16,7 +16,6 @@ class LineCharts extends Component {
     render() {
         return (
             <div className="App">
-                oredakdfhkf
                 <div className="header">react svg line chart [part 1]</div>
                 <LineChart data={this.createFakeData()} />
                 <LineChart data={this.createFakeData()} color={'#F44336'}  />

@@ -5,7 +5,6 @@ class LineChart extends Component {
 
     // GET MAX & MIN X
     getMinX() {
-        console.log("inside getMinX");
         const {data} = this.props;
         return data[0].x;
     }
@@ -41,7 +40,7 @@ class LineChart extends Component {
         });
 
         return (
-            <path className="linechart_path" fill='#2196F3' d={pathD} style={{stroke: color}} />
+            <path className="linechart_path" d={pathD} style={{stroke: color}} />
         );
     }
     // BUILD GRID AXIS

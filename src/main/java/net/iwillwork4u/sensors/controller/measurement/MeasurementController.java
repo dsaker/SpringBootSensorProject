@@ -46,7 +46,7 @@ public class MeasurementController {
                 sensor, temperature, humidity);
 
         measurementRepository.save(measurement);
-
+        sensorRepository.addMeasurement(sensor, measurement);
         return ResponseEntity.ok().build();
     }
 }

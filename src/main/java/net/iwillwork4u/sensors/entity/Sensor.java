@@ -24,6 +24,7 @@ public class Sensor {
     private Integer timeBetween = 1;
     private LocalDateTime alertTriggered = LocalDateTime.now().minusYears(1);
     private Double lastTemp = 0.0;
+    private Double lastHum = 0.0;
     @ManyToOne
     private User user;
     @JsonIgnore
@@ -35,7 +36,7 @@ public class Sensor {
     private Set<Measurement> measurements = new HashSet<>();
 
 
-    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, User user) {
+    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, Double lastHum, User user) {
         this.name = name;
         this.htAlert = htAlert;
         this.ltAlert = ltAlert;
@@ -46,6 +47,7 @@ public class Sensor {
         this.timeBetween = timeBetween;
         this.alertTriggered = alertTriggered;
         this.lastTemp = lastTemp;
+        this.lastHum = lastHum;
         this.user = user;
     }
 
@@ -143,6 +145,14 @@ public class Sensor {
         this.lastTemp = last_temp;
     }
 
+    public Double getLastHum() {
+        return lastHum;
+    }
+
+    public void setLastHum(Double last_hum) {
+        this.lastHum = last_hum;
+    }
+
     public User getUser() {
         return user;
     }
@@ -179,7 +189,7 @@ public class Sensor {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sid, name, htAlert, ltAlert, hhAlert, lhAlert, tempAlertOn, humAlertOn, timeBetween, alertTriggered, lastTemp, user);
+        return Objects.hash(sid, name, htAlert, ltAlert, hhAlert, lhAlert, tempAlertOn, humAlertOn, timeBetween, alertTriggered, lastTemp, lastHum, user);
     }
 
     @Override
@@ -196,6 +206,7 @@ public class Sensor {
                 ", time between alerts=" + timeBetween +
                 ", alert triggered at=" + alertTriggered +
                 ", last temperature recorded=" + lastTemp +
+                ", last humidity recorded=" + lastHum +
                 '}';
     }
 }

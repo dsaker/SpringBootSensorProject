@@ -7,6 +7,8 @@ public class SensorRepositoryCustomImpl implements SensorRepositoryCustom{
     @Override
     public void addMeasurement(Sensor sensor, Measurement measurement) {
         sensor.addMeasurement(measurement);
+        sensor.setLastTemp(measurement.getTemperature());
+        sensor.setLastHum(measurement.getHumidity());
     }
 
     @Override

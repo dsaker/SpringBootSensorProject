@@ -80,6 +80,7 @@ export default class Display extends React.Component {
                     <tr>
                         <th>Name</th>
                         <th>Current Temperature</th>
+                        <th>Current Humidity</th>
                     </tr>
                     {sensors}
                     </tbody>
@@ -103,6 +104,7 @@ class TempDisplay extends React.Component {
             <tr>
                 <td>{this.props.sensor.entity.name}</td>
                 <td>{this.props.sensor.entity.lastTemp}</td>
+                <td>{this.props.sensor.entity.lastHum}</td>
             </tr>
         )
     }

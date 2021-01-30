@@ -1,3 +1,13 @@
+.App {
+
+}
+
+.header {
+    padding: 15px;
+    font-weight: 700;
+    color: #757575;
+}
+
 input.field {
     width: 90%;
 }
@@ -10,6 +20,17 @@ td, th {
     border: 1px solid #999;
     padding: 0.5rem;
     text-align: left;
+}
+
+/*Classes for line charts*/
+
+.linechart_path {
+    stroke-width: 5;
+    fill: none;
+}
+
+.linechart_axis {
+    stroke: #bdc3c7;
 }
 
 /*Classes for creating dialogs*/

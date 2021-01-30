@@ -1,9 +1,10 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.measurement;
 
+import net.iwillwork4u.sensors.controller.sensor.SensorNotFoundException;
 import net.iwillwork4u.sensors.entity.Measurement;
 import net.iwillwork4u.sensors.repository.MeasurementRepository;
 import net.iwillwork4u.sensors.entity.Sensor;
-import net.iwillwork4u.sensors.repository.SensorRepository;
+import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,8 +32,8 @@ public class MeasurementController {
     @PostMapping()
     public ResponseEntity createMeasurement(
             @RequestParam long sensorId,
-            @RequestParam String key,
-            @RequestParam double value) {
+            @RequestParam double temperature,
+            @RequestParam double humidity) {
         Sensor sensor = sensorRepository.findById(sensorId).orElseThrow(() ->
                 new SensorNotFoundException(sensorId));
 
@@ -42,7 +43,7 @@ public class MeasurementController {
         }
 
         Measurement measurement = new Measurement(
-                sensor, key, value);
+                sensor, temperature, humidity);
 
         measurementRepository.save(measurement);
 

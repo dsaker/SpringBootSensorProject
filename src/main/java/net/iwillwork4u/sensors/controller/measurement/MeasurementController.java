@@ -1,4 +1,4 @@
-package net.iwillwork4u.sensors.controller;
+package net.iwillwork4u.sensors.controller.measurement;
 
 import net.iwillwork4u.sensors.controller.sensor.SensorNotFoundException;
 import net.iwillwork4u.sensors.entity.Measurement;

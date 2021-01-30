@@ -1,5 +1,7 @@
 package net.iwillwork4u.sensors.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -24,6 +26,7 @@ public class Sensor {
     private Double lastTemp = 0.0;
     @ManyToOne
     private User user;
+    @JsonIgnore
     @OneToMany(
             mappedBy = "sensor",
             cascade = {CascadeType.MERGE},
@@ -148,6 +151,7 @@ public class Sensor {
         this.user = user;
     }
 
+    @JsonIgnore
     public Set<Measurement> getDataEntries() {
         return measurements;
     }

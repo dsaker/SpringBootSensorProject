@@ -7,94 +7,7 @@ const when = require('when');
 
 const root = '/api'
 
-class LoadFromServer extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {sensors: [], attributes: [], pageSize: 10, links: {}};
-        this.updatePageSize = this.updatePageSize.bind(this);
-        this.onNavigate = this.onNavigate.bind(this);
-    }
-
-    loadFromServer(pageSize) {
-        follow(client, root, [
-            {rel: 'sensors', params: {size: pageSize}}]
-        ).then(sensorCollection => {
-            //console.log("loadFromServer:sensorCollection");
-            //console.log(sensorCollection);
-            return client({
-                method: 'GET',
-                path: sensorCollection.entity._links.profile.href,
-                headers: {'Accept': 'application/schema+json'}
-            }).then(schema => {
-                this.schema = schema.entity;
-                return sensorCollection;
-            });
-        }).then(sensorCollection => {
-            this.setState({links: sensorCollection.entity._links});
-            return sensorCollection.entity._embedded.sensors.map(sensor =>
-                client({
-                    method: 'GET',
-                    path: sensor._links.self.href
-                })
-            );
-        }).then(sensorPromises => {
-            return when.all(sensorPromises);
-        }).done(sensors => {
-            //console.log("loadFromServer:sensors")
-            //console.log(sensors);
-            this.setState({
-                sensors: sensors,
-                attributes: Object.keys(this.schema.properties),
-                pageSize: pageSize,
-            });
-        });
-    }
-
-    onNavigate(navUri) {
-        client({method: 'GET', path: navUri}).then (sensorCollection => {
-            this.links = sensorCollection.entity._links;
-
-            return sensorCollection.entity._embedded.sensors.map(sensor =>
-                client({method: 'GET', path: sensor._links.self.href}));
-        }).then(sensorPromises => {
-            return when.all(sensorPromises);
-        }).done(sensors => {
-            this.setState({
-                sensors: sensors,
-                attributes: Object.keys(this.schema.properties),
-                pageSize: this.state.pageSize,
-                links: this.links
-            });
-        });
-    }
-
-    updatePageSize(pageSize) {
-        if (pageSize !== this.state.pageSize) {
-            this.loadFromServer(pageSize);
-        }
-    }
-
-    componentDidMount() {
-        this.loadFromServer(this.state.pageSize);
-    }
-}
-
-class Display extends LoadFromServer {
-    render() {
-        return (
-            <div>
-                <SensorList sensors={this.state.sensors}
-                            links={this.state.links}
-                            pageSize={this.state.pageSize}
-                            onNavigate={this.onNavigate}
-                            updatePageSize={this.updatePageSize}/>
-            </div>
-        )
-    }
-}
-
-class SensorList extends React.Component {
+export default class Display extends React.Component {
 
     constructor(props) {
         super(props);
@@ -141,7 +54,7 @@ class SensorList extends React.Component {
         //console.log("SensorList:sensors");
         //console.log(this.props.sensors);
         const sensors = this.props.sensors.map(sensor =>
-            <Sensor key={sensor.entity._links.self.href}
+            <TempDisplay key={sensor.entity._links.self.href}
                     sensor={sensor}/>
         );
 
@@ -161,8 +74,7 @@ class SensorList extends React.Component {
 
         return(
             <div>
-                <input ref={this.pageSize
-                } defaultValue={this.props.pageSize} onInput={this.handleInput}/>
+                <input ref={this.pageSize} defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>
                     <tbody>
                     <tr>
@@ -180,7 +92,7 @@ class SensorList extends React.Component {
     }
 }
 
-class Sensor extends React.Component {
+class TempDisplay extends React.Component {
 
     constructor(props) {
         super(props);
@@ -195,5 +107,3 @@ class Sensor extends React.Component {
         )
     }
 }
-
-export default Display;

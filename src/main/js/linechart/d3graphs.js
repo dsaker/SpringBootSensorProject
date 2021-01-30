@@ -1,4 +1,4 @@
-import Sensors from '../sensors';
+import Sensors from '../sensorlist';
 
 const root = '/api'
 

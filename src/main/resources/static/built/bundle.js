@@ -38051,7 +38051,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _sensors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sensors */ "./src/main/js/sensors.js");
+/* harmony import */ var _sensorlist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sensorlist */ "./src/main/js/sensorlist.js");
 /* harmony import */ var _display__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./display */ "./src/main/js/display.js");
 /* harmony import */ var _linechart_linecharts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./linechart/linecharts */ "./src/main/js/linechart/linecharts.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -38082,103 +38082,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var Home = /*#__PURE__*/function (_React$Component) {
-  _inherits(Home, _React$Component);
-
-  var _super = _createSuper(Home);
-
-  function Home() {
-    _classCallCheck(this, Home);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Home, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Home"));
-    }
-  }]);
-
-  return Home;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-var App = /*#__PURE__*/function (_React$Component2) {
-  _inherits(App, _React$Component2);
-
-  var _super2 = _createSuper(App);
-
-  function App() {
-    _classCallCheck(this, App);
-
-    return _super2.apply(this, arguments);
-  }
-
-  _createClass(App, [{
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/"
-      }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/display"
-      }, "Temperature Display")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/linecharts"
-      }, "Line Charts")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/sensors"
-      }, "Sensors")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/display"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_display__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/linecharts"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_linechart_linecharts__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        path: "/sensors"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sensors__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
-    }
-  }]);
-
-  return App;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-
-
-/***/ }),
-
-/***/ "./src/main/js/display.js":
-/*!********************************!*\
-  !*** ./src/main/js/display.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-'use-strict';
-
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-
 var client = __webpack_require__(/*! ./functions/client */ "./src/main/js/functions/client.js");
 
 var follow = __webpack_require__(/*! ./functions/follow */ "./src/main/js/functions/follow.js");
@@ -38187,15 +38090,15 @@ var when = __webpack_require__(/*! when */ "./node_modules/when/when.js");
 
 var root = '/api';
 
-var LoadFromServer = /*#__PURE__*/function (_React$Component) {
-  _inherits(LoadFromServer, _React$Component);
+var App = /*#__PURE__*/function (_React$Component) {
+  _inherits(App, _React$Component);
 
-  var _super = _createSuper(LoadFromServer);
+  var _super = _createSuper(App);
 
-  function LoadFromServer(props) {
+  function App(props) {
     var _this;
 
-    _classCallCheck(this, LoadFromServer);
+    _classCallCheck(this, App);
 
     _this = _super.call(this, props);
     _this.state = {
@@ -38205,11 +38108,14 @@ var LoadFromServer = /*#__PURE__*/function (_React$Component) {
       links: {}
     };
     _this.updatePageSize = _this.updatePageSize.bind(_assertThisInitialized(_this));
+    _this.onCreate = _this.onCreate.bind(_assertThisInitialized(_this));
+    _this.onDelete = _this.onDelete.bind(_assertThisInitialized(_this));
     _this.onNavigate = _this.onNavigate.bind(_assertThisInitialized(_this));
+    _this.onUpdate = _this.onUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(LoadFromServer, [{
+  _createClass(App, [{
     key: "loadFromServer",
     value: function loadFromServer(pageSize) {
       var _this2 = this;
@@ -38256,15 +38162,63 @@ var LoadFromServer = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "onCreate",
+    value: function onCreate(newSensor) {
+      var _this3 = this;
+
+      follow(client, root, ['sensors']).then(function (sensorCollection) {
+        return client({
+          method: 'POST',
+          path: sensorCollection.entity._links.self.href,
+          entity: newSensor,
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      }).then(function (response) {
+        _this3.loadFromServer(_this3.state.pageSize);
+      });
+    }
+  }, {
+    key: "onUpdate",
+    value: function onUpdate(sensor, updatedSensor) {
+      var _this4 = this;
+
+      client({
+        method: 'PUT',
+        path: sensor._links.self.href,
+        entity: updatedSensor,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).done(function (response) {
+        _this4.loadFromServer(_this4.state.pageSize);
+      });
+    }
+  }, {
+    key: "onDelete",
+    value: function onDelete(sensor) {
+      var _this5 = this;
+
+      console.log("onDelete");
+      console.log(sensor);
+      client({
+        method: 'DELETE',
+        path: sensor.entity._links.self.href
+      }).done(function (response) {
+        _this5.loadFromServer(_this5.state.pageSize);
+      });
+    }
+  }, {
     key: "onNavigate",
     value: function onNavigate(navUri) {
-      var _this3 = this;
+      var _this6 = this;
 
       client({
         method: 'GET',
         path: navUri
       }).then(function (sensorCollection) {
-        _this3.links = sensorCollection.entity._links;
+        _this6.links = sensorCollection.entity._links;
         return sensorCollection.entity._embedded.sensors.map(function (sensor) {
           return client({
             method: 'GET',
@@ -38274,11 +38228,11 @@ var LoadFromServer = /*#__PURE__*/function (_React$Component) {
       }).then(function (sensorPromises) {
         return when.all(sensorPromises);
       }).done(function (sensors) {
-        _this3.setState({
+        _this6.setState({
           sensors: sensors,
-          attributes: Object.keys(_this3.schema.properties),
-          pageSize: _this3.state.pageSize,
-          links: _this3.links
+          attributes: Object.keys(_this6.schema.properties),
+          pageSize: _this6.state.pageSize,
+          links: _this6.links
         });
       });
     }
@@ -38294,59 +38248,128 @@ var LoadFromServer = /*#__PURE__*/function (_React$Component) {
     value: function componentDidMount() {
       this.loadFromServer(this.state.pageSize);
     }
-  }]);
-
-  return LoadFromServer;
-}(React.Component);
-
-var Display = /*#__PURE__*/function (_LoadFromServer) {
-  _inherits(Display, _LoadFromServer);
-
-  var _super2 = _createSuper(Display);
-
-  function Display() {
-    _classCallCheck(this, Display);
-
-    return _super2.apply(this, arguments);
-  }
-
-  _createClass(Display, [{
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(SensorList, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/"
+      }, "Home")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/display"
+      }, "Temperature Display")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/linecharts"
+      }, "Line Charts")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/sensorlist"
+      }, "Sensors List")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Home, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/display"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_display__WEBPACK_IMPORTED_MODULE_3__["default"], {
         sensors: this.state.sensors,
         links: this.state.links,
         pageSize: this.state.pageSize,
         onNavigate: this.onNavigate,
         updatePageSize: this.updatePageSize
-      }));
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/linecharts"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_linechart_linecharts__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        path: "/sensorlist"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_sensorlist__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        sensors: this.state.sensors,
+        links: this.state.links,
+        pageSize: this.state.pageSize,
+        onNavigate: this.onNavigate,
+        onUpdate: this.onUpdate,
+        onDelete: this.onDelete,
+        updatePageSize: this.updatePageSize
+      })));
     }
   }]);
 
-  return Display;
-}(LoadFromServer(props));
+  return App;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-var SensorList = /*#__PURE__*/function (_React$Component2) {
-  _inherits(SensorList, _React$Component2);
 
-  var _super3 = _createSuper(SensorList);
 
-  function SensorList(props) {
-    var _this4;
+var Home = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Home, _React$Component2);
 
-    _classCallCheck(this, SensorList);
+  var _super2 = _createSuper(Home);
 
-    _this4 = _super3.call(this, props);
-    _this4.pageSize = React.createRef();
-    _this4.handleNavFirst = _this4.handleNavFirst.bind(_assertThisInitialized(_this4));
-    _this4.handleNavPrev = _this4.handleNavPrev.bind(_assertThisInitialized(_this4));
-    _this4.handleNavNext = _this4.handleNavNext.bind(_assertThisInitialized(_this4));
-    _this4.handleNavLast = _this4.handleNavLast.bind(_assertThisInitialized(_this4));
-    _this4.handleInput = _this4.handleInput.bind(_assertThisInitialized(_this4));
-    return _this4;
+  function Home() {
+    _classCallCheck(this, Home);
+
+    return _super2.apply(this, arguments);
   }
 
-  _createClass(SensorList, [{
+  _createClass(Home, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Home"));
+    }
+  }]);
+
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/***/ }),
+
+/***/ "./src/main/js/display.js":
+/*!********************************!*\
+  !*** ./src/main/js/display.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Display; });
+'use-strict';
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var Display = /*#__PURE__*/function (_React$Component) {
+  _inherits(Display, _React$Component);
+
+  var _super = _createSuper(Display);
+
+  function Display(props) {
+    var _this;
+
+    _classCallCheck(this, Display);
+
+    _this = _super.call(this, props);
+    _this.pageSize = React.createRef();
+    _this.handleNavFirst = _this.handleNavFirst.bind(_assertThisInitialized(_this));
+    _this.handleNavPrev = _this.handleNavPrev.bind(_assertThisInitialized(_this));
+    _this.handleNavNext = _this.handleNavNext.bind(_assertThisInitialized(_this));
+    _this.handleNavLast = _this.handleNavLast.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Display, [{
     key: "handleInput",
     value: function handleInput(e) {
       e.preventDefault();
@@ -38385,10 +38408,8 @@ var SensorList = /*#__PURE__*/function (_React$Component2) {
   }, {
     key: "render",
     value: function render() {
-      //console.log("SensorList:sensors");
-      //console.log(this.props.sensors);
       var sensors = this.props.sensors.map(function (sensor) {
-        return /*#__PURE__*/React.createElement(Sensor, {
+        return /*#__PURE__*/React.createElement(TempDisplay, {
           key: sensor.entity._links.self.href,
           sensor: sensor
         });
@@ -38431,31 +38452,31 @@ var SensorList = /*#__PURE__*/function (_React$Component2) {
     }
   }]);
 
-  return SensorList;
+  return Display;
 }(React.Component);
 
-var Sensor = /*#__PURE__*/function (_React$Component3) {
-  _inherits(Sensor, _React$Component3);
 
-  var _super4 = _createSuper(Sensor);
 
-  function Sensor(props) {
-    _classCallCheck(this, Sensor);
+var TempDisplay = /*#__PURE__*/function (_React$Component2) {
+  _inherits(TempDisplay, _React$Component2);
 
-    return _super4.call(this, props);
+  var _super2 = _createSuper(TempDisplay);
+
+  function TempDisplay(props) {
+    _classCallCheck(this, TempDisplay);
+
+    return _super2.call(this, props);
   }
 
-  _createClass(Sensor, [{
+  _createClass(TempDisplay, [{
     key: "render",
     value: function render() {
       return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lastTemp));
     }
   }]);
 
-  return Sensor;
+  return TempDisplay;
 }(React.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Display);
 
 /***/ }),
 
@@ -38880,17 +38901,16 @@ var LineCharts = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
-/***/ "./src/main/js/sensors.js":
-/*!********************************!*\
-  !*** ./src/main/js/sensors.js ***!
-  \********************************/
+/***/ "./src/main/js/sensorlist.js":
+/*!***********************************!*\
+  !*** ./src/main/js/sensorlist.js ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-
-
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SensorList; });
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -38917,220 +38937,182 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-var client = __webpack_require__(/*! ./functions/client */ "./src/main/js/functions/client.js");
+var SensorList = /*#__PURE__*/function (_React$Component) {
+  _inherits(SensorList, _React$Component);
 
-var follow = __webpack_require__(/*! ./functions/follow */ "./src/main/js/functions/follow.js");
+  var _super = _createSuper(SensorList);
 
-var when = __webpack_require__(/*! when */ "./node_modules/when/when.js");
-
-var root = '/api';
-
-var Sensors = /*#__PURE__*/function (_React$Component) {
-  _inherits(Sensors, _React$Component);
-
-  var _super = _createSuper(Sensors);
-
-  function Sensors(props) {
+  function SensorList(props) {
     var _this;
 
-    _classCallCheck(this, Sensors);
+    _classCallCheck(this, SensorList);
 
     _this = _super.call(this, props);
-    _this.state = {
-      sensors: [],
-      attributes: [],
-      pageSize: 10,
-      links: {}
-    };
-    _this.updatePageSize = _this.updatePageSize.bind(_assertThisInitialized(_this));
-    _this.onCreate = _this.onCreate.bind(_assertThisInitialized(_this));
-    _this.onDelete = _this.onDelete.bind(_assertThisInitialized(_this));
-    _this.onNavigate = _this.onNavigate.bind(_assertThisInitialized(_this));
-    _this.onUpdate = _this.onUpdate.bind(_assertThisInitialized(_this));
+    _this.pageSize = React.createRef();
+    _this.handleNavFirst = _this.handleNavFirst.bind(_assertThisInitialized(_this));
+    _this.handleNavPrev = _this.handleNavPrev.bind(_assertThisInitialized(_this));
+    _this.handleNavNext = _this.handleNavNext.bind(_assertThisInitialized(_this));
+    _this.handleNavLast = _this.handleNavLast.bind(_assertThisInitialized(_this));
+    _this.handleInput = _this.handleInput.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(Sensors, [{
-    key: "loadFromServer",
-    value: function loadFromServer(pageSize) {
-      var _this2 = this;
+  _createClass(SensorList, [{
+    key: "handleInput",
+    value: function handleInput(e) {
+      e.preventDefault();
+      var pageSize = this.pageSize.current.value;
 
-      follow(client, root, [{
-        rel: 'sensors',
-        params: {
-          size: pageSize
-        }
-      }]).then(function (sensorCollection) {
-        //console.log("loadFromServer:sensorCollection");
-        //console.log(sensorCollection);
-        return client({
-          method: 'GET',
-          path: sensorCollection.entity._links.profile.href,
-          headers: {
-            'Accept': 'application/schema+json'
-          }
-        }).then(function (schema) {
-          _this2.schema = schema.entity;
-          return sensorCollection;
-        });
-      }).then(function (sensorCollection) {
-        _this2.setState({
-          links: sensorCollection.entity._links
-        });
-
-        return sensorCollection.entity._embedded.sensors.map(function (sensor) {
-          return client({
-            method: 'GET',
-            path: sensor._links.self.href
-          });
-        });
-      }).then(function (sensorPromises) {
-        return when.all(sensorPromises);
-      }).done(function (sensors) {
-        //console.log("loadFromServer:sensors")
-        //console.log(sensors);
-        _this2.setState({
-          sensors: sensors,
-          attributes: Object.keys(_this2.schema.properties),
-          pageSize: pageSize
-        });
-      });
-    }
-  }, {
-    key: "onCreate",
-    value: function onCreate(newSensor) {
-      var _this3 = this;
-
-      follow(client, root, ['sensors']).then(function (sensorCollection) {
-        return client({
-          method: 'POST',
-          path: sensorCollection.entity._links.self.href,
-          entity: newSensor,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-      }).then(function (response) {
-        _this3.loadFromServer(_this3.state.pageSize);
-      });
-    }
-  }, {
-    key: "onUpdate",
-    value: function onUpdate(sensor, updatedSensor) {
-      var _this4 = this;
-
-      //console.log("onUpdate: sensor");
-      //console.log(sensor);
-      //console.log(updatedSensor);
-      client({
-        method: 'PUT',
-        path: sensor._links.self.href,
-        entity: updatedSensor,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).done(function (response) {
-        _this4.loadFromServer(_this4.state.pageSize);
-      });
-    }
-  }, {
-    key: "onDelete",
-    value: function onDelete(sensor) {
-      var _this5 = this;
-
-      console.log("onDelete");
-      console.log(sensor);
-      client({
-        method: 'DELETE',
-        path: sensor.entity._links.self.href
-      }).done(function (response) {
-        _this5.loadFromServer(_this5.state.pageSize);
-      });
-    }
-  }, {
-    key: "onNavigate",
-    value: function onNavigate(navUri) {
-      var _this6 = this;
-
-      client({
-        method: 'GET',
-        path: navUri
-      }).then(function (sensorCollection) {
-        _this6.links = sensorCollection.entity._links;
-        return sensorCollection.entity._embedded.sensors.map(function (sensor) {
-          return client({
-            method: 'GET',
-            path: sensor._links.self.href
-          });
-        });
-      }).then(function (sensorPromises) {
-        return when.all(sensorPromises);
-      }).done(function (sensors) {
-        _this6.setState({
-          sensors: sensors,
-          attributes: Object.keys(_this6.schema.properties),
-          pageSize: _this6.state.pageSize,
-          links: _this6.links
-        });
-      });
-    }
-  }, {
-    key: "updatePageSize",
-    value: function updatePageSize(pageSize) {
-      if (pageSize !== this.state.pageSize) {
-        this.loadFromServer(pageSize);
+      if (/^[0-9]+$/.test(pageSize)) {
+        this.props.updatePageSize(pageSize);
+      } else {
+        this.pageSize.current.value = pageSize.substring(0, pageSize.length - 1);
       }
     }
   }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.loadFromServer(this.state.pageSize);
+    key: "handleNavFirst",
+    value: function handleNavFirst(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.first.href);
+    }
+  }, {
+    key: "handleNavPrev",
+    value: function handleNavPrev(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.prev.href);
+    }
+  }, {
+    key: "handleNavNext",
+    value: function handleNavNext(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.next.href);
+    }
+  }, {
+    key: "handleNavLast",
+    value: function handleNavLast(e) {
+      e.preventDefault();
+      this.props.onNavigate(this.props.links.last.href);
     }
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
+      //console.log("SensorList:sensors");
+      //console.log(this.props.sensors);
+      var sensors = this.props.sensors.map(function (sensor) {
+        return /*#__PURE__*/React.createElement(Sensor, {
+          key: sensor.entity._links.self.href,
+          sensor: sensor,
+          onUpdate: _this2.props.onUpdate,
+          onDelete: _this2.props.onDelete
+        });
+      });
+      var navLinks = [];
+
+      if ("first" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "first",
+          onClick: this.handleNavFirst
+        }, "<<"));
+      }
+
+      if ("prev" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "prev",
+          onClick: this.handleNavPrev
+        }, "<"));
+      }
+
+      if ("next" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "next",
+          onClick: this.handleNavNext
+        }, ">"));
+      }
+
+      if ("last" in this.props.links) {
+        navLinks.push( /*#__PURE__*/React.createElement("button", {
+          key: "last",
+          onClick: this.handleNavLast
+        }, ">>"));
+      }
+
       return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(CreateDialog, {
-        attributes: this.state.attributes,
+        attributes: this.props.attributes,
         onCreate: this.onCreate
-      }), /*#__PURE__*/React.createElement(SensorList, {
-        sensors: this.state.sensors,
-        links: this.state.links,
-        pageSize: this.state.pageSize,
-        onNavigate: this.onNavigate,
-        onUpdate: this.onUpdate,
-        onDelete: this.onDelete,
-        updatePageSize: this.updatePageSize
-      }));
+      }), /*#__PURE__*/React.createElement("input", {
+        ref: this.pageSize,
+        defaultValue: this.props.pageSize,
+        onInput: this.handleInput
+      }), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Name"), /*#__PURE__*/React.createElement("th", null, "High Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Low Temp Alert"), /*#__PURE__*/React.createElement("th", null, "High Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Low Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Time Between Alerts"), /*#__PURE__*/React.createElement("th", null, "Last Alert Triggered")), sensors)), /*#__PURE__*/React.createElement("div", null, navLinks));
     }
   }]);
 
-  return Sensors;
+  return SensorList;
 }(React.Component);
 
-var UpdateDialog = /*#__PURE__*/function (_React$Component2) {
-  _inherits(UpdateDialog, _React$Component2);
 
-  var _super2 = _createSuper(UpdateDialog);
+
+var Sensor = /*#__PURE__*/function (_React$Component2) {
+  _inherits(Sensor, _React$Component2);
+
+  var _super2 = _createSuper(Sensor);
+
+  function Sensor(props) {
+    var _this3;
+
+    _classCallCheck(this, Sensor);
+
+    _this3 = _super2.call(this, props);
+    _this3.handleDelete = _this3.handleDelete.bind(_assertThisInitialized(_this3));
+    return _this3;
+  }
+
+  _createClass(Sensor, [{
+    key: "handleDelete",
+    value: function handleDelete() {
+      this.props.onDelete(this.props.sensor);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.htAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.ltAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.hhAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lhAlert), this.props.sensor.entity.tempAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), this.props.sensor.entity.humAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.timeBetween), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.alertTriggered), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(UpdateDialog, {
+        sensor: this.props.sensor,
+        onUpdate: this.props.onUpdate
+      })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("button", {
+        onClick: this.handleDelete
+      }, "Delete")));
+    }
+  }]);
+
+  return Sensor;
+}(React.Component);
+
+var UpdateDialog = /*#__PURE__*/function (_React$Component3) {
+  _inherits(UpdateDialog, _React$Component3);
+
+  var _super3 = _createSuper(UpdateDialog);
 
   function UpdateDialog(props) {
-    var _this7;
+    var _this4;
 
     _classCallCheck(this, UpdateDialog);
 
-    _this7 = _super2.call(this, props);
-    _this7.textInput = React.createRef();
-    _this7.state = {
+    _this4 = _super3.call(this, props);
+    _this4.textInput = React.createRef();
+    _this4.state = {
       tempAlertOn: true,
       humAlertOn: true,
-      timeBetween: _this7.props.sensor.entity['timeBetween'],
-      htAlert: _this7.props.sensor.entity['htAlert'],
-      ltAlert: _this7.props.sensor.entity['ltAlert'],
-      hhAlert: _this7.props.sensor.entity['hhAlert'],
-      lhAlert: _this7.props.sensor.entity['lhAlert']
+      timeBetween: _this4.props.sensor.entity['timeBetween'],
+      htAlert: _this4.props.sensor.entity['htAlert'],
+      ltAlert: _this4.props.sensor.entity['ltAlert'],
+      hhAlert: _this4.props.sensor.entity['hhAlert'],
+      lhAlert: _this4.props.sensor.entity['lhAlert']
     };
-    _this7.handleSubmit = _this7.handleSubmit.bind(_assertThisInitialized(_this7));
-    _this7.handleInputChange = _this7.handleInputChange.bind(_assertThisInitialized(_this7));
-    return _this7;
+    _this4.handleSubmit = _this4.handleSubmit.bind(_assertThisInitialized(_this4));
+    _this4.handleInputChange = _this4.handleInputChange.bind(_assertThisInitialized(_this4));
+    return _this4;
   }
 
   _createClass(UpdateDialog, [{
@@ -39229,20 +39211,20 @@ var UpdateDialog = /*#__PURE__*/function (_React$Component2) {
   return UpdateDialog;
 }(React.Component);
 
-var CreateDialog = /*#__PURE__*/function (_React$Component3) {
-  _inherits(CreateDialog, _React$Component3);
+var CreateDialog = /*#__PURE__*/function (_React$Component4) {
+  _inherits(CreateDialog, _React$Component4);
 
-  var _super3 = _createSuper(CreateDialog);
+  var _super4 = _createSuper(CreateDialog);
 
   function CreateDialog(props) {
-    var _this8;
+    var _this5;
 
     _classCallCheck(this, CreateDialog);
 
-    _this8 = _super3.call(this, props);
-    _this8.textInput = React.createRef();
-    _this8.handleSubmit = _this8.handleSubmit.bind(_assertThisInitialized(_this8));
-    return _this8;
+    _this5 = _super4.call(this, props);
+    _this5.textInput = React.createRef();
+    _this5.handleSubmit = _this5.handleSubmit.bind(_assertThisInitialized(_this5));
+    return _this5;
   }
 
   _createClass(CreateDialog, [{
@@ -39278,157 +39260,6 @@ var CreateDialog = /*#__PURE__*/function (_React$Component3) {
 
   return CreateDialog;
 }(React.Component);
-
-var SensorList = /*#__PURE__*/function (_React$Component4) {
-  _inherits(SensorList, _React$Component4);
-
-  var _super4 = _createSuper(SensorList);
-
-  function SensorList(props) {
-    var _this9;
-
-    _classCallCheck(this, SensorList);
-
-    _this9 = _super4.call(this, props);
-    _this9.pageSize = React.createRef();
-    _this9.handleNavFirst = _this9.handleNavFirst.bind(_assertThisInitialized(_this9));
-    _this9.handleNavPrev = _this9.handleNavPrev.bind(_assertThisInitialized(_this9));
-    _this9.handleNavNext = _this9.handleNavNext.bind(_assertThisInitialized(_this9));
-    _this9.handleNavLast = _this9.handleNavLast.bind(_assertThisInitialized(_this9));
-    _this9.handleInput = _this9.handleInput.bind(_assertThisInitialized(_this9));
-    return _this9;
-  }
-
-  _createClass(SensorList, [{
-    key: "handleInput",
-    value: function handleInput(e) {
-      e.preventDefault();
-      var pageSize = this.pageSize.current.value;
-
-      if (/^[0-9]+$/.test(pageSize)) {
-        this.props.updatePageSize(pageSize);
-      } else {
-        this.pageSize.current.value = pageSize.substring(0, pageSize.length - 1);
-      }
-    }
-  }, {
-    key: "handleNavFirst",
-    value: function handleNavFirst(e) {
-      e.preventDefault();
-      this.props.onNavigate(this.props.links.first.href);
-    }
-  }, {
-    key: "handleNavPrev",
-    value: function handleNavPrev(e) {
-      e.preventDefault();
-      this.props.onNavigate(this.props.links.prev.href);
-    }
-  }, {
-    key: "handleNavNext",
-    value: function handleNavNext(e) {
-      e.preventDefault();
-      this.props.onNavigate(this.props.links.next.href);
-    }
-  }, {
-    key: "handleNavLast",
-    value: function handleNavLast(e) {
-      e.preventDefault();
-      this.props.onNavigate(this.props.links.last.href);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this10 = this;
-
-      //console.log("SensorList:sensors");
-      //console.log(this.props.sensors);
-      var sensors = this.props.sensors.map(function (sensor) {
-        return /*#__PURE__*/React.createElement(Sensor, {
-          key: sensor.entity._links.self.href,
-          sensor: sensor,
-          onUpdate: _this10.props.onUpdate,
-          onDelete: _this10.props.onDelete
-        });
-      });
-      var navLinks = [];
-
-      if ("first" in this.props.links) {
-        navLinks.push( /*#__PURE__*/React.createElement("button", {
-          key: "first",
-          onClick: this.handleNavFirst
-        }, "<<"));
-      }
-
-      if ("prev" in this.props.links) {
-        navLinks.push( /*#__PURE__*/React.createElement("button", {
-          key: "prev",
-          onClick: this.handleNavPrev
-        }, "<"));
-      }
-
-      if ("next" in this.props.links) {
-        navLinks.push( /*#__PURE__*/React.createElement("button", {
-          key: "next",
-          onClick: this.handleNavNext
-        }, ">"));
-      }
-
-      if ("last" in this.props.links) {
-        navLinks.push( /*#__PURE__*/React.createElement("button", {
-          key: "last",
-          onClick: this.handleNavLast
-        }, ">>"));
-      }
-
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
-        ref: this.pageSize,
-        defaultValue: this.props.pageSize,
-        onInput: this.handleInput
-      }), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Name"), /*#__PURE__*/React.createElement("th", null, "High Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Low Temp Alert"), /*#__PURE__*/React.createElement("th", null, "High Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Low Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Temp Alert"), /*#__PURE__*/React.createElement("th", null, "Humidity Alert"), /*#__PURE__*/React.createElement("th", null, "Time Between Alerts"), /*#__PURE__*/React.createElement("th", null, "Last Alert Triggered"), /*#__PURE__*/React.createElement("th", null, "Last Temp")), sensors)), /*#__PURE__*/React.createElement("div", null, navLinks));
-    }
-  }]);
-
-  return SensorList;
-}(React.Component);
-
-var Sensor = /*#__PURE__*/function (_React$Component5) {
-  _inherits(Sensor, _React$Component5);
-
-  var _super5 = _createSuper(Sensor);
-
-  function Sensor(props) {
-    var _this11;
-
-    _classCallCheck(this, Sensor);
-
-    _this11 = _super5.call(this, props);
-    _this11.handleDelete = _this11.handleDelete.bind(_assertThisInitialized(_this11));
-    return _this11;
-  }
-
-  _createClass(Sensor, [{
-    key: "handleDelete",
-    value: function handleDelete() {
-      //console.log("handleDelete")
-      //console.log(this.props.sensor)
-      this.props.onDelete(this.props.sensor);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.name), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.htAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.ltAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.hhAlert), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lhAlert), this.props.sensor.entity.tempAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), this.props.sensor.entity.humAlertOn ? /*#__PURE__*/React.createElement("td", null, "On") : /*#__PURE__*/React.createElement("td", null, "Off"), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.timeBetween), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.alertTriggered), /*#__PURE__*/React.createElement("td", null, this.props.sensor.entity.lastTemp), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(UpdateDialog, {
-        sensor: this.props.sensor,
-        onUpdate: this.props.onUpdate
-      })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("button", {
-        onClick: this.handleDelete
-      }, "Delete")));
-    }
-  }]);
-
-  return Sensor;
-}(React.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Sensors);
 
 /***/ }),
 

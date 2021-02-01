@@ -138,20 +138,21 @@ export default class App extends React.Component {
                 <Route path="/"><Home/></Route>
                 <Route path="/display">
                     <Display sensors={this.state.sensors}
-                                         links={this.state.links}
-                                         pageSize={this.state.pageSize}
-                                         onNavigate={this.onNavigate}
-                                         updatePageSize={this.updatePageSize}/>
+                             links={this.state.links}
+                             pageSize={this.state.pageSize}
+                             onNavigate={this.onNavigate}
+                             updatePageSize={this.updatePageSize}/>
                 </Route>
                 <Route path="/linecharts"><LineCharts/></Route>
                 <Route path="/sensorlist">
-                    <SensorList sensors={this.state.sensors}
-                                                   links={this.state.links}
-                                                   pageSize={this.state.pageSize}
-                                                   onNavigate={this.onNavigate}
-                                                   onUpdate={this.onUpdate}
-                                                   onDelete={this.onDelete}
-                                                   updatePageSize={this.updatePageSize}/>
+                    <SensorList    sensors={this.state.sensors}
+                                   links={this.state.links}
+                                   pageSize={this.state.pageSize}
+                                   onNavigate={this.onNavigate}
+                                   onCreate={this.onCreate}
+                                   onUpdate={this.onUpdate}
+                                   onDelete={this.onDelete}
+                                   updatePageSize={this.updatePageSize}/>
                 </Route>
             </div>
         )

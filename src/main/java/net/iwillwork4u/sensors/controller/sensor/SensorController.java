@@ -49,8 +49,4 @@ public class SensorController {
         return assembler.toModel(sensor);
     }
 
-    @PostMapping("/data/{id}")
-    public void addData(@PathVariable Long id) {
-    }
-
 }

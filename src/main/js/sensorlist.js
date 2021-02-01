@@ -45,8 +45,7 @@ export default class SensorList extends React.Component {
         }
 
         render() {
-            //console.log("SensorList:sensors");
-            //console.log(this.props.sensors);
+
             const sensors = this.props.sensors.map(sensor =>
                 <Sensor key={sensor.entity._links.self.href}
                         sensor={sensor}
@@ -70,7 +69,7 @@ export default class SensorList extends React.Component {
 
         return(
             <div>
-                <CreateDialog attributes={this.props.attributes} onCreate={this.onCreate}/>
+                <CreateDialog attributes={this.props.attributes} onCreate={this.props.onCreate}/>
                 <input ref={this.pageSize
                 } defaultValue={this.props.pageSize} onInput={this.handleInput}/>
                 <table>

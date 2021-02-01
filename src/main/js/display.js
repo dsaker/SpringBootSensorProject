@@ -1,11 +1,6 @@
 'use-strict';
 
 const React = require('react');
-const client = require('./functions/client');
-const follow = require('./functions/follow');
-const when = require('when');
-
-const root = '/api'
 
 export default class Display extends React.Component {
 
@@ -51,8 +46,6 @@ export default class Display extends React.Component {
     }
 
     render() {
-        //console.log("SensorList:sensors");
-        //console.log(this.props.sensors);
         const sensors = this.props.sensors.map(sensor =>
             <TempDisplay key={sensor.entity._links.self.href}
                     sensor={sensor}/>

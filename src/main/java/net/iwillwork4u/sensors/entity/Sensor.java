@@ -1,13 +1,9 @@
 package net.iwillwork4u.sensors.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 public class Sensor {
@@ -24,15 +20,8 @@ public class Sensor {
     private Integer timeBetween = 1;
     private LocalDateTime alertTriggered = LocalDateTime.now().minusYears(1);
     private Double lastTemp = 0.0;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private User user;
-    @JsonIgnore
-    @OneToMany(
-            mappedBy = "sensor",
-            cascade = {CascadeType.MERGE},
-            fetch = FetchType.LAZY
-    )
-    private Set<Measurement> measurements = new HashSet<>();
 
 
     public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, User user) {
@@ -49,11 +38,12 @@ public class Sensor {
         this.user = user;
     }
 
-    public Sensor() { }
-
-    public Sensor(String name) {
-        this.name = name;;
+    public Sensor(String name, User user) {
+        this.name = name;
+        this.user = user;
     }
+
+    public Sensor() { }
 
     public Long getSid() {
         return sid;
@@ -149,24 +139,6 @@ public class Sensor {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    @JsonIgnore
-    public Set<Measurement> getDataEntries() {
-        return measurements;
-    }
-
-    public void setDataEntries(Set<Measurement> dataEntries) {
-        this.measurements = dataEntries;
-    }
-
-    public void addMeasurement(Measurement measurement) {
-        measurements.add(measurement);
-        measurement.setSensor(this);
-    }
-
-    public void removeMeasurement(Measurement measurement) {
-        measurements.remove(measurement);
     }
 
     @Override

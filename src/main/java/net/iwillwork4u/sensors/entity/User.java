@@ -1,22 +1,27 @@
 package net.iwillwork4u.sensors.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 public class User {
 
-    private @Id @GeneratedValue Long uid;
+    private @Id
+    @GeneratedValue
+    Long id;
     private String name;
     private String phoneNumber;
     private String carrier;
-    @OneToMany(targetEntity = Sensor.class)
-    private Set<Sensor> sensorSet = new HashSet<>();
+/*    @OneToMany(
+            mappedBy = "sensor",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Sensor> sensors = new ArrayList<>();*/
+
 
     public User(String name, String phonenumber, String carrier) {
         this.name = name;
@@ -26,12 +31,12 @@ public class User {
 
     protected User() { }
 
-    public Long getUid() {
-        return uid;
+    public Long getId() {
+        return id;
     }
 
-    public void setUid(Long id) {
-        this.uid = id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -58,32 +63,40 @@ public class User {
         this.carrier = carrier;
     }
 
+/*    public List<Sensor> getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(List<Sensor> sensors) {
+        this.sensors = sensors;
+    }
+
     public void addSensor(Sensor sensor) {
-        sensorSet.add(sensor);
+        sensors.add(sensor);
         sensor.setUser(this);
     }
 
     public void removeSensor(Sensor sensor) {
-        sensorSet.remove(sensor);
-    }
+        sensors.remove(sensor);
+        sensor.setUser(null);
+    }*/
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(uid, user.uid) && Objects.equals(name, user.name) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(carrier, user.carrier);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(carrier, user.carrier);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uid, name, phoneNumber, carrier);
+        return Objects.hash(id, name, phoneNumber, carrier);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + uid +
                 ", name='" + name + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", carrier='" + carrier + '\'' +

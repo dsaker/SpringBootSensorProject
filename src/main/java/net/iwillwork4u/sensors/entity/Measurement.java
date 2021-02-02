@@ -1,5 +1,6 @@
 package net.iwillwork4u.sensors.entity;
 
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -8,14 +9,11 @@ import java.util.Objects;
 public class Measurement {
 
     @Id @GeneratedValue private Long id;
-    @ManyToOne
-    private Sensor sensor;
-    @Column(nullable = false)
     private LocalDateTime timestamp = LocalDateTime.now();
-    @Column(nullable = false)
     private double temperature;
-    @Column(nullable = false)
     private double humidity;
+    @ManyToOne(optional = false)
+    private Sensor sensor;
 
     public Measurement() {
     }

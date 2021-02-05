@@ -24,11 +24,6 @@ public class MeasurementController {
         this.measurementRepository = measurementRepository;
     }
 
-    @GetMapping()
-    public List<Measurement> all() {
-        return measurementRepository.findAll();
-    }
-
     @PostMapping()
     public ResponseEntity createMeasurement(
             @RequestParam long sensorId,

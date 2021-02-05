@@ -1,7 +1,9 @@
 package net.iwillwork4u.sensors.controller.sensor;
 
 import net.iwillwork4u.sensors.entity.Sensor;
+import net.iwillwork4u.sensors.entity.User;
 import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
+import net.iwillwork4u.sensors.repository.user.UserRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -18,11 +20,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class SensorController {
 
     private final SensorRepository sensorRepository;
-
+    private final UserRepository userRepository;
     private final SensorModelAssembler assembler;
 
-    SensorController(SensorRepository sensorRepository, SensorModelAssembler assembler) {
+    SensorController(SensorRepository sensorRepository, UserRepository userRepository, SensorModelAssembler assembler) {
         this.sensorRepository = sensorRepository;
+        this.userRepository = userRepository;
         this.assembler = assembler;
     }
 
@@ -36,8 +39,9 @@ public class SensorController {
     }
 
     @PostMapping()
-    ResponseEntity<EntityModel<Sensor>> newSensor(@RequestBody Sensor newSensor) {
-
+    ResponseEntity<EntityModel<Sensor>> newSensor(@RequestParam long userId,
+                                                  @RequestParam String sensorName) {
+        Sensor newSensor = newSensor(sensorName);
         EntityModel<Sensor> entityModel = assembler.toModel(sensorRepository.save(newSensor));
         return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
     }

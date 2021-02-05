@@ -31,7 +31,7 @@ public class LoadDatabase implements CommandLineRunner{
     int numMeasurements = 50;
     @Override
     public void run(String... args) throws Exception {
-        userRepository.deleteAll();
+      /*  userRepository.deleteAll();
         sensorRepository.deleteAll();
         User u1 = new User("Bilbo", "5555555555", "Sprint");
         User u2 = new User("Fred", "5555555551", "Verizon");
@@ -61,15 +61,15 @@ public class LoadDatabase implements CommandLineRunner{
                 measurementRepository.save(m);
                 sensorRepository.addMeasurement(s, m);
                 j++;
-            }
+            }*/
         }
 
-        userRepository.addSensor(s1, u1);
+ /*       userRepository.addSensor(s1, u1);
         userRepository.addSensor(s2, u2);
         userRepository.addSensor(s3, u1);
         userRepository.addSensor(s4, u2);
         userRepository.addSensor(s5, u1);
         log.info("Preloading " + userRepository.save(u1));
         log.info("Preloading " + userRepository.save(u2));
-    }
+    }*/
 }

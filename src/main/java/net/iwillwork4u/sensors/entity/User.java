@@ -4,19 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class User {
+public class User implements Serializable {
 
     private @Id @GeneratedValue Long uid;
     private String name;
     private String phoneNumber;
     private String carrier;
-    @OneToMany(targetEntity = Sensor.class)
-    private Set<Sensor> sensorSet = new HashSet<>();
+    @OneToMany
+    private Set<Sensor> sensors = new HashSet<>();
 
     public User(String name, String phonenumber, String carrier) {
         this.name = name;
@@ -26,11 +27,11 @@ public class User {
 
     protected User() { }
 
-    public Long getUid() {
+    public Long getId() {
         return uid;
     }
 
-    public void setUid(Long id) {
+    public void setId(Long id) {
         this.uid = id;
     }
 
@@ -58,13 +59,20 @@ public class User {
         this.carrier = carrier;
     }
 
+    public Set<Sensor> getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(Set<Sensor> sensors) {
+        this.sensors = sensors;
+    }
+
     public void addSensor(Sensor sensor) {
-        sensorSet.add(sensor);
-        sensor.setUser(this);
+        this.sensors.add(sensor);
     }
 
     public void removeSensor(Sensor sensor) {
-        sensorSet.remove(sensor);
+        this.sensors.remove(sensor);
     }
 
     @Override

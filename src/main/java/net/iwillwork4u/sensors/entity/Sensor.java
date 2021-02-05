@@ -28,9 +28,7 @@ public class Sensor {
     private User user;
     @JsonIgnore
     @OneToMany(
-            mappedBy = "sensor",
-            cascade = {CascadeType.MERGE},
-            fetch = FetchType.LAZY
+            mappedBy = "sensor"
     )
     private Set<Measurement> measurements = new HashSet<>();
 

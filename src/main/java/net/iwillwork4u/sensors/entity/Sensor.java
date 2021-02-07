@@ -24,18 +24,12 @@ public class Sensor {
     private Integer timeBetween = 1;
     private LocalDateTime alertTriggered = LocalDateTime.now().minusYears(1);
     private Double lastTemp = 0.0;
-    @ManyToOne
-    private User user;
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "sensor",
-            cascade = {CascadeType.MERGE},
-            fetch = FetchType.LAZY
-    )
+    @OneToMany
     private Set<Measurement> measurements = new HashSet<>();
 
 
-    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp, User user) {
+    public Sensor(String name, Integer htAlert, Integer ltAlert, Integer hhAlert, Integer lhAlert, Boolean tempAlertOn, Boolean humAlertOn, Integer timeBetween, LocalDateTime alertTriggered, Double lastTemp) {
         this.name = name;
         this.htAlert = htAlert;
         this.ltAlert = ltAlert;
@@ -46,7 +40,6 @@ public class Sensor {
         this.timeBetween = timeBetween;
         this.alertTriggered = alertTriggered;
         this.lastTemp = lastTemp;
-        this.user = user;
     }
 
     public Sensor() { }
@@ -143,14 +136,6 @@ public class Sensor {
         this.lastTemp = last_temp;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @JsonIgnore
     public Set<Measurement> getDataEntries() {
         return measurements;
@@ -162,7 +147,6 @@ public class Sensor {
 
     public void addMeasurement(Measurement measurement) {
         measurements.add(measurement);
-        measurement.setSensor(this);
     }
 
     public void removeMeasurement(Measurement measurement) {
@@ -179,7 +163,7 @@ public class Sensor {
 
     @Override
     public int hashCode() {
-        return Objects.hash(sid, name, htAlert, ltAlert, hhAlert, lhAlert, tempAlertOn, humAlertOn, timeBetween, alertTriggered, lastTemp, user);
+        return Objects.hash(sid, name, htAlert, ltAlert, hhAlert, lhAlert, tempAlertOn, humAlertOn, timeBetween, alertTriggered, lastTemp);
     }
 
     @Override

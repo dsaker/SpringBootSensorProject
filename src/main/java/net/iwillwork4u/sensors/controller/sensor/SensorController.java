@@ -4,8 +4,6 @@ import net.iwillwork4u.sensors.entity.Sensor;
 import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +12,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping(value = "sensors/")
+@RequestMapping(value = "practice/")
 public class SensorController {
 
     private final SensorRepository sensorRepository;
@@ -35,12 +33,14 @@ public class SensorController {
                 linkTo(methodOn(SensorController.class).all()).withSelfRel());
     }
 
+/*
     @PostMapping()
     ResponseEntity<EntityModel<Sensor>> newSensor(@RequestBody Sensor newSensor) {
 
         EntityModel<Sensor> entityModel = assembler.toModel(sensorRepository.save(newSensor));
         return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
     }
+*/
 
     @GetMapping("/{id}")
     public EntityModel<Sensor> one(@PathVariable Long id) {
@@ -49,4 +49,8 @@ public class SensorController {
         return assembler.toModel(sensor);
     }
 
+    @PostMapping("/newSensor")
+    public String newSensor(@RequestBody Sensor sensor) {
+        return "This is the name you sent " + name;
+    }
 }

@@ -8,8 +8,6 @@ import java.util.Objects;
 public class Measurement {
 
     @Id @GeneratedValue private Long id;
-    @ManyToOne
-    private Sensor sensor;
     @Column(nullable = false)
     private LocalDateTime timestamp = LocalDateTime.now();
     @Column(nullable = false)
@@ -20,14 +18,12 @@ public class Measurement {
     public Measurement() {
     }
 
-    public Measurement(Sensor sensor, double temp, double hum) {
-        this.sensor = sensor;
+    public Measurement(double temp, double hum) {
         this.temperature = temp;
         this.humidity = hum;
     }
 
-    public Measurement(Sensor sensor, LocalDateTime timestamp, double temperature, double humidity) {
-        this.sensor = sensor;
+    public Measurement(LocalDateTime timestamp, double temperature, double humidity) {
         this.timestamp = timestamp;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -39,14 +35,6 @@ public class Measurement {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Sensor getSensor() {
-        return sensor;
-    }
-
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
     }
 
     public LocalDateTime getTimestamp() {
@@ -78,18 +66,17 @@ public class Measurement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Measurement that = (Measurement) o;
-        return Double.compare(that.temperature, temperature) == 0 && Double.compare(that.humidity, humidity) == 0 && id.equals(that.id) && sensor.equals(that.sensor) && timestamp.equals(that.timestamp);
+        return Double.compare(that.temperature, temperature) == 0 && Double.compare(that.humidity, humidity) == 0 && id.equals(that.id) && timestamp.equals(that.timestamp);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sensor, timestamp, temperature, humidity);
+        return Objects.hash(id, timestamp, temperature, humidity);
     }
 
     @Override
     public String toString() {
         return "Measurement{" +
-                "sensor=" + sensor +
                 ", timestamp=" + timestamp +
                 ", temperature=" + temperature +
                 ", humidity=" + humidity +

@@ -4,7 +4,6 @@ import net.iwillwork4u.sensors.controller.sensor.SensorNotFoundException;
 import net.iwillwork4u.sensors.entity.Measurement;
 import net.iwillwork4u.sensors.repository.MeasurementRepository;
 import net.iwillwork4u.sensors.entity.Sensor;
-import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -42,8 +41,7 @@ public class MeasurementController {
                     .body("No sensor defined with the ID: " + sensorId);
         }
 
-        Measurement measurement = new Measurement(
-                sensor, temperature, humidity);
+        Measurement measurement = new Measurement(temperature, humidity);
 
         measurementRepository.save(measurement);
 

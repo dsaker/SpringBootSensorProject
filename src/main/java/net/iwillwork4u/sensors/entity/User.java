@@ -15,7 +15,7 @@ public class User {
     private String name;
     private String phoneNumber;
     private String carrier;
-    @OneToMany(targetEntity = Sensor.class)
+    @OneToMany
     private Set<Sensor> sensorSet = new HashSet<>();
 
     public User(String name, String phonenumber, String carrier) {
@@ -60,7 +60,6 @@ public class User {
 
     public void addSensor(Sensor sensor) {
         sensorSet.add(sensor);
-        sensor.setUser(this);
     }
 
     public void removeSensor(Sensor sensor) {

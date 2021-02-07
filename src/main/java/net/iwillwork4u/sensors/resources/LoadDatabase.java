@@ -3,7 +3,6 @@ package net.iwillwork4u.sensors.resources;
 import net.iwillwork4u.sensors.entity.Measurement;
 import net.iwillwork4u.sensors.entity.Sensor;
 import net.iwillwork4u.sensors.repository.MeasurementRepository;
-import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
 import net.iwillwork4u.sensors.entity.User;
 import net.iwillwork4u.sensors.repository.user.UserRepository;
 import org.slf4j.Logger;
@@ -40,11 +39,6 @@ public class LoadDatabase implements CommandLineRunner{
         Sensor s3 = new Sensor("s3");
         Sensor s4 = new Sensor("s4");
         Sensor s5 = new Sensor("s5");
-        log.info("Preloading " + sensorRepository.save(s1));
-        log.info("Preloading " + sensorRepository.save(s2));
-        log.info("Preloading " + sensorRepository.save(s3));
-        log.info("Preloading " + sensorRepository.save(s4));
-        log.info("Preloading " + sensorRepository.save(s5));
         //add measurements to each sensor
         Sensor[] sensorArray ={s1,s2,s3,s4};
         for (Sensor s:sensorArray) {
@@ -57,13 +51,17 @@ public class LoadDatabase implements CommandLineRunner{
                 if(i==100) delta = -1;
                 i+=delta;
                 dateTime = dateTime.plusMinutes(5);
-                Measurement m = new Measurement(s, dateTime, i, i);
+                Measurement m = new Measurement(dateTime, i, i);
                 measurementRepository.save(m);
                 sensorRepository.addMeasurement(s, m);
                 j++;
             }
         }
-
+        log.info("Preloading " + sensorRepository.save(s1));
+        log.info("Preloading " + sensorRepository.save(s2));
+        log.info("Preloading " + sensorRepository.save(s3));
+        log.info("Preloading " + sensorRepository.save(s4));
+        log.info("Preloading " + sensorRepository.save(s5));
         userRepository.addSensor(s1, u1);
         userRepository.addSensor(s2, u2);
         userRepository.addSensor(s3, u1);

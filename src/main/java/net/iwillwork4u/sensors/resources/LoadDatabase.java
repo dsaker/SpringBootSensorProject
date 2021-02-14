@@ -1,17 +1,12 @@
 package net.iwillwork4u.sensors.resources;
 
-import net.iwillwork4u.sensors.entity.Measurement;
-import net.iwillwork4u.sensors.entity.Sensor;
 import net.iwillwork4u.sensors.repository.MeasurementRepository;
-import net.iwillwork4u.sensors.repository.sensor.SensorRepository;
-import net.iwillwork4u.sensors.entity.User;
-import net.iwillwork4u.sensors.repository.user.UserRepository;
+import net.iwillwork4u.sensors.repository.SensorRepository;
+import net.iwillwork4u.sensors.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class LoadDatabase implements CommandLineRunner{
@@ -31,7 +26,7 @@ public class LoadDatabase implements CommandLineRunner{
     int numMeasurements = 50;
     @Override
     public void run(String... args) throws Exception {
-        userRepository.deleteAll();
+ /*       userRepository.deleteAll();
         sensorRepository.deleteAll();
         User u1 = new User("Bilbo", "5555555555", "Sprint");
         User u2 = new User("Fred", "5555555551", "Verizon");
@@ -71,5 +66,6 @@ public class LoadDatabase implements CommandLineRunner{
         userRepository.addSensor(s5, u1);
         log.info("Preloading " + userRepository.save(u1));
         log.info("Preloading " + userRepository.save(u2));
+    */
     }
 }
